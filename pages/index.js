@@ -14,7 +14,7 @@ export default function Home({ allTodos }) {
 
       <main className={styles.main}>
         <h2>Completed</h2>
-        {allTodos.map(({ id, title, completed }) => (
+        {allTodos.filter((item) => item.completed).map(({ id, title, completed }) => (
           <Card key={id} title={title} completed={completed} />
         ))}
       </main>
