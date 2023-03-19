@@ -3,6 +3,7 @@ import button from '../styles/Buttons.module.scss'
 import styles from '../styles/Home.module.scss'
 import { getAllTodos } from '../lib/posts';
 import Card from '../components/Card';
+import { HiPlus } from 'react-icons/hi';
 
 export default function Home({ allTodos }) {
   return (
@@ -14,11 +15,11 @@ export default function Home({ allTodos }) {
       </Head>
 
       <main className={styles.main}>
-        <h2>Completed</h2>
-        {allTodos.filter((item) => item.completed).slice(0, 5).map(({ id, title, description, completed }) => (
-          <Card key={id} title={title} description={description} completed={completed} />
+        <h2 className={styles.title}>Completed</h2>
+        {allTodos.slice(0, 5).map(({ id, title, description, date, completed }) => (
+          <Card key={id} title={title} description={description} completed={completed} date={date} />
         ))}
-      <button className={`${styles.button} ${button.button} ${button.xl}`}>Create New</button>
+      <button className={`${styles.button} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
       </main>
     </div>
   )

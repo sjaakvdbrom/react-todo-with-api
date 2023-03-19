@@ -18,4 +18,14 @@
 .xl {
     padding: 21px 50px;
     font-size: 19px;
+
+    svg {
+        font-size: 22px;
+    }
+}
+
+.iconBefore {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
