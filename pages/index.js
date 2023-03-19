@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { getAllTodos } from '../lib/posts';
+import Card from '../components/Card';
 
 export default function Home({ allTodos }) {
   return (
@@ -12,10 +13,9 @@ export default function Home({ allTodos }) {
       </Head>
 
       <main className={styles.main}>
-        {allTodos.map(({ id, title }) => (
-          <li key={id}>
-            {title}
-          </li>
+        <h2>Completed</h2>
+        {allTodos.map(({ id, title, completed }) => (
+          <Card key={id} title={title} completed={completed} />
         ))}
       </main>
     </div>
