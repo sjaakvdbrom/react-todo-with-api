@@ -5,6 +5,10 @@
     border: 0;
     border-radius: 10px;
     cursor: pointer;
+
+    &:hover {
+        background-color: #2e80f7;
+    }
 }
 
 .full {
@@ -12,5 +16,6 @@
 }
 
 .xl {
-    padding: 25px 50px;
+    padding: 21px 50px;
+    font-size: 19px;
 }

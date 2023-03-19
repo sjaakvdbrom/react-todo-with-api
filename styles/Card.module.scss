@@ -1,9 +1,28 @@
 .container {
     margin-bottom: 20px;
+    padding: 15px 20px;
     background-color: #fff;
     border-radius: 10px;
+    border-left: 9px solid #f7b5c3;
+}
 
-    &.completed {
+.title,
+.description {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.title {
+    margin-bottom: 5px;
+    font-weight: 600;
+
+    .completed & {
         text-decoration: line-through;
     }
+}
+
+.description {
+    color: #929395;
+    font-size: 14px;
 }
