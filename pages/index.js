@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { getSortedPostsData } from '../lib/posts';
+import { getAllTodos } from '../lib/posts';
 
-export default function Home({ allPostsData }) {
+export default function Home({ allTodos }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,7 +12,7 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <main className={styles.main}>
-        {allPostsData.map(({ id, title }) => (
+        {allTodos.map(({ id, title }) => (
           <li key={id}>
             {title}
           </li>
@@ -23,10 +23,10 @@ export default function Home({ allPostsData }) {
 }
 
 export async function getStaticProps() {
-  const allPostsData = await getSortedPostsData();
+  const allTodos = await getAllTodos();
   return {
     props: {
-      allPostsData,
+      allTodos,
     },
   };
 }
