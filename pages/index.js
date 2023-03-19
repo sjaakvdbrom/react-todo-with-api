@@ -16,7 +16,7 @@ export default function Home({ allTodos }) {
 
       <main className={styles.main}>
         <h2 className={styles.title}>Completed</h2>
-        {allTodos.slice(0, 5).map(({ id, title, description, date, completed }) => (
+        {allTodos.filter((item) => item.completed).slice(0, 5).map(({ id, title, description, date, completed }) => (
           <Card key={id} title={title} description={description} completed={completed} date={date} />
         ))}
       <button className={`${styles.button} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
