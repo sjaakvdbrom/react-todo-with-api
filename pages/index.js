@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import button from '../styles/Buttons.module.scss'
 import styles from '../styles/Home.module.scss'
-import { getAllTodos } from '../lib/posts';
+import { getAllTodos } from '../lib/todos';
 import Card from '../components/Card';
 import { HiPlus } from 'react-icons/hi';
 
