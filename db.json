@@ -2,253 +2,210 @@
   "todos": [
     {
       "id": 1,
-      "userId": 2,
-      "title": "Vestibulum rutrum rutrum neque.",
-      "description": "Proin eu mi. Nulla ac enim.",
-      "date": "2023/03/16",
-      "time": "17:07",
+      "title": "Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+      "description": "Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo.",
+      "date": "2022/06/20",
+      "time": "15:30",
       "completed": true,
-      "category": 5
+      "categoryId": 3
     },
     {
       "id": 2,
-      "userId": 2,
-      "title": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-      "description": "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros.",
-      "date": "2022/11/28",
-      "time": "18:58",
+      "title": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",
+      "date": "2022/06/13",
+      "time": "12:53",
       "completed": false,
-      "category": 2
+      "categoryId": 3
     },
     {
       "id": 3,
-      "userId": 5,
-      "title": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",
-      "description": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
-      "date": "2022/10/19",
-      "time": "19:38",
-      "completed": true,
-      "category": 3
+      "title": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "description": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros.",
+      "date": "2022/12/06",
+      "time": "6:16",
+      "completed": false,
+      "categoryId": 1
     },
     {
       "id": 4,
-      "userId": 2,
-      "title": "Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",
-      "description": "Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-      "date": "2022/11/23",
-      "time": "21:37",
-      "completed": true,
-      "category": 5
+      "title": "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+      "description": "Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.",
+      "date": "2023/02/28",
+      "time": "23:11",
+      "completed": false,
+      "categoryId": 5
     },
     {
       "id": 5,
-      "userId": 1,
-      "title": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",
-      "description": "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-      "date": "2022/04/05",
-      "time": "22:05",
-      "completed": true,
-      "category": 2
+      "title": "Donec semper sapien a libero. Nam dui.",
+      "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+      "date": "2023/03/17",
+      "time": "7:22",
+      "completed": false,
+      "categoryId": 1
     },
     {
       "id": 6,
-      "userId": 5,
-      "title": "Praesent blandit lacinia erat.",
-      "description": "Donec dapibus. Duis at velit eu est congue elementum.",
-      "date": "2022/06/12",
-      "time": "20:00",
+      "title": "Nunc purus. Phasellus in felis.",
+      "description": "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus.",
+      "date": "2022/11/30",
+      "time": "1:44",
       "completed": false,
-      "category": 5
+      "categoryId": 2
     },
     {
       "id": 7,
-      "userId": 5,
-      "title": "Aliquam erat volutpat. In congue.",
-      "description": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.",
-      "date": "2023/02/14",
-      "time": "9:24",
+      "title": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",
+      "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+      "date": "2022/10/16",
+      "time": "19:24",
       "completed": false,
-      "category": 5
+      "categoryId": 1
     },
     {
       "id": 8,
-      "userId": 1,
-      "title": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy.",
-      "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",
-      "date": "2022/06/15",
-      "time": "16:40",
+      "title": "Curabitur in libero ut massa volutpat convallis.",
+      "description": "Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.",
+      "date": "2023/01/20",
+      "time": "2:06",
       "completed": false,
-      "category": 4
+      "categoryId": 4
     },
     {
       "id": 9,
-      "userId": 1,
-      "title": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
-      "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum.",
-      "date": "2022/09/11",
-      "time": "9:24",
-      "completed": false,
-      "category": 3
+      "title": "Praesent id massa id nisl venenatis lacinia.",
+      "description": "Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+      "date": "2022/05/21",
+      "time": "3:43",
+      "completed": true,
+      "categoryId": 4
     },
     {
       "id": 10,
-      "userId": 1,
-      "title": "Nunc nisl.",
-      "description": "Nullam molestie nibh in lectus. Pellentesque at nulla.",
-      "date": "2022/11/26",
-      "time": "11:13",
+      "title": "Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti.",
+      "description": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.",
+      "date": "2023/01/09",
+      "time": "16:42",
       "completed": true,
-      "category": 4
+      "categoryId": 1
     },
     {
       "id": 11,
-      "userId": 4,
-      "title": "Morbi a ipsum. Integer a nibh.",
-      "description": "Vivamus tortor. Duis mattis egestas metus. Aenean fermentum.",
-      "date": "2023/02/22",
-      "time": "15:04",
-      "completed": false,
-      "category": 5
+      "title": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "description": "Suspendisse potenti. Nullam porttitor lacus at turpis.",
+      "date": "2022/09/04",
+      "time": "17:11",
+      "completed": true,
+      "categoryId": 5
     },
     {
       "id": 12,
-      "userId": 1,
-      "title": "Duis ac nibh.",
-      "description": "Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
-      "date": "2022/05/11",
-      "time": "22:37",
-      "completed": true,
-      "category": 5
+      "title": "Ut tellus.",
+      "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+      "date": "2022/09/24",
+      "time": "6:22",
+      "completed": false,
+      "categoryId": 2
     },
     {
       "id": 13,
-      "userId": 5,
-      "title": "In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-      "description": "Nulla tellus. In sagittis dui vel nisl.",
-      "date": "2022/11/09",
-      "time": "18:52",
+      "title": "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",
+      "description": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus. Pellentesque at nulla.",
+      "date": "2022/04/27",
+      "time": "5:05",
       "completed": false,
-      "category": 1
+      "categoryId": 3
     },
     {
       "id": 14,
-      "userId": 2,
-      "title": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.",
-      "description": "Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus.",
-      "date": "2022/09/11",
-      "time": "19:04",
-      "completed": true,
-      "category": 3
+      "title": "Maecenas tincidunt lacus at velit.",
+      "description": "Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat.",
+      "date": "2022/05/31",
+      "time": "6:04",
+      "completed": false,
+      "categoryId": 5
     },
     {
       "id": 15,
-      "userId": 1,
-      "title": "Sed accumsan felis. Ut at dolor quis odio consequat varius.",
-      "description": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.",
-      "date": "2022/05/02",
-      "time": "8:19",
-      "completed": true,
-      "category": 4
+      "title": "Sed vel enim sit amet nunc viverra dapibus.",
+      "description": "Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.",
+      "date": "2022/11/08",
+      "time": "19:07",
+      "completed": false,
+      "categoryId": 4
     },
     {
       "id": 16,
-      "userId": 3,
-      "title": "Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-      "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum.",
-      "date": "2022/05/24",
-      "time": "9:26",
+      "title": "Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",
+      "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis.",
+      "date": "2022/09/27",
+      "time": "8:27",
       "completed": false,
-      "category": 2
+      "categoryId": 4
     },
     {
       "id": 17,
-      "userId": 1,
-      "title": "Integer a nibh. In quis justo.",
-      "description": "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-      "date": "2022/09/05",
-      "time": "19:33",
+      "title": "Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+      "description": "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat.",
+      "date": "2023/01/16",
+      "time": "16:41",
       "completed": true,
-      "category": 3
+      "categoryId": 4
     },
     {
       "id": 18,
-      "userId": 4,
-      "title": "Suspendisse accumsan tortor quis turpis. Sed ante.",
-      "description": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-      "date": "2022/09/04",
-      "time": "4:46",
+      "title": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla.",
+      "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",
+      "date": "2022/05/30",
+      "time": "18:26",
       "completed": false,
-      "category": 1
+      "categoryId": 4
     },
     {
       "id": 19,
-      "userId": 1,
-      "title": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.",
-      "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.",
-      "date": "2023/01/28",
-      "time": "14:04",
-      "completed": false,
-      "category": 1
+      "title": "Duis at velit eu est congue elementum. In hac habitasse platea dictumst.",
+      "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.",
+      "date": "2022/07/15",
+      "time": "10:06",
+      "completed": true,
+      "categoryId": 5
     },
     {
       "id": 20,
-      "userId": 5,
-      "title": "Proin risus.",
-      "description": "Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus.",
-      "date": "2022/04/01",
-      "time": "1:36",
-      "completed": true,
-      "category": 2
-    },
-    {
-      "id": 21,
-      "userId": 1,
-      "title": "In eleifend quam a odio. In hac habitasse platea dictumst.",
-      "description": "Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-      "date": "2023/02/02",
-      "time": "4:32",
+      "title": "Vivamus vel nulla eget eros elementum pellentesque.",
+      "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla.",
+      "date": "2022/07/19",
+      "time": "6:55",
       "completed": false,
-      "category": 5
+      "categoryId": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "accumsan",
+      "color": "#8b3357"
     },
     {
-      "id": 22,
-      "userId": 4,
-      "title": "Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.",
-      "description": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
-      "date": "2022/08/04",
-      "time": "19:39",
-      "completed": false,
-      "category": 1
+      "id": 2,
+      "title": "auctor",
+      "color": "#8c3020"
     },
     {
-      "id": 23,
-      "userId": 4,
-      "title": "Nulla mollis molestie lorem.",
-      "description": "Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-      "date": "2022/11/26",
-      "time": "6:19",
-      "completed": false,
-      "category": 3
+      "id": 3,
+      "title": "volutpat",
+      "color": "#83e1c7"
     },
     {
-      "id": 24,
-      "userId": 3,
-      "title": "Praesent blandit lacinia erat.",
-      "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-      "date": "2022/05/10",
-      "time": "18:56",
-      "completed": true,
-      "category": 1
+      "id": 4,
+      "title": "ut",
+      "color": "#293008"
     },
     {
-      "id": 25,
-      "userId": 2,
-      "title": "Duis consequat dui nec nisi volutpat eleifend.",
-      "description": "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",
-      "date": "2022/08/31",
-      "time": "16:36",
-      "completed": true,
-      "category": 2
+      "id": 5,
+      "title": "sit",
+      "color": "#ebc833"
     }
   ]
 }
