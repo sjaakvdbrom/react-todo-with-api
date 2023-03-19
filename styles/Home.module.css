@@ -1,5 +1,7 @@
 .container {
   margin: 0 auto;
   width: 430px;
-  background-color: #fff;
+  padding: 30px;
+  border-radius: 25px;
+  background-color: #fafbfd;
 }
