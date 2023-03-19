@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import button from '../styles/Buttons.module.scss'
+import styles from '../styles/Home.module.scss'
 import { getAllTodos } from '../lib/posts';
 import Card from '../components/Card';
 
@@ -17,6 +18,7 @@ export default function Home({ allTodos }) {
         {allTodos.filter((item) => item.completed).map(({ id, title, completed }) => (
           <Card key={id} title={title} completed={completed} />
         ))}
+      <button className={`${styles.button} ${button.button} ${button.xl}`}>Add new</button>
       </main>
     </div>
   )

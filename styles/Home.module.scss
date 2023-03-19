@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 430px;
+  padding: 30px 30px 100px;
+  border-radius: 25px;
+  background-color: #fafbfd;
+}
+
+.button {
+  position: absolute;
+  bottom: 30px;
+  width: calc(100% - 60px);
+}

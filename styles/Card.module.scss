@@ -1,0 +1,9 @@
+.container {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+
+    &.completed {
+        text-decoration: line-through;
+    }
+}
