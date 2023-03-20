@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import Head from 'next/head'
 import 'swiper/css';
 import button from '../styles/Buttons.module.scss'
@@ -10,9 +11,23 @@ import { BiCalendar, BiBell } from 'react-icons/bi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function Home({ allTodos, allCategories }) {
+  const listInnerRef = useRef();
+  const [isBottom, setIsBottom] = useState(false)
+
+  const onScroll = () => {
+    if (listInnerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+      if (scrollTop + clientHeight === scrollHeight) {
+        setIsBottom(true)
+      } else {
+        setIsBottom(false)
+      }
+    }
+  }
+
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
+    <div className={`${styles.wrapper} ${!isBottom && styles.notBottom}`}>
+      <div className={styles.container} onScroll={() => onScroll()} ref={listInnerRef}>
         <Head>
           <title>Todo App</title>
           <meta name="description" content="React Todo app using https://my-json-server.typicode.com/" />
