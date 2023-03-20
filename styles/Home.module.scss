@@ -7,6 +7,39 @@
   background-color: #fafbfd;
 }
 
+.header {
+  margin-top: 10px;
+  margin-bottom: 28px;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  height: 54px;
+  width: 54px;
+  margin-right: 15px;
+  background-color: #fdd7a6;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.greeting {
+  margin-bottom: 5px;
+  font-weight: 500;
+  line-height: 1;
+  color: #9ea1a6;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1;
+  color: #353638;
+}
+
 .button {
   position: absolute;
   bottom: 30px;
@@ -14,12 +47,14 @@
 }
 
 .title {
+  margin-top: 0;
   margin-bottom: 20px;
   font-size: 19px;
 }
 
 .swiper {
   margin-right: -30px;
+  margin-bottom: 26px;
   margin-left: -30px;
   padding-right: 30px;
   padding-left: 30px;
