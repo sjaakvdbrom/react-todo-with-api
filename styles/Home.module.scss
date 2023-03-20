@@ -8,6 +8,9 @@
 }
 
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 10px;
   margin-bottom: 28px;
 }
@@ -40,7 +43,30 @@
   color: #353638;
 }
 
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #eceff4;
+  font-size: 20px;
+  color: #333438;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #dbdde0;
+  }
+}
+
+.create {
   position: absolute;
   bottom: 30px;
   width: calc(100% - 60px);

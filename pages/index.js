@@ -6,6 +6,7 @@ import { getAllTodos, getAllCategories } from '../lib/todos';
 import Card from '../components/Card';
 import LargeCard from '../components/LargeCard';
 import { HiPlus } from 'react-icons/hi';
+import { BiCalendar, BiBell } from 'react-icons/bi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function Home({ allTodos, allCategories }) {
@@ -24,6 +25,10 @@ export default function Home({ allTodos, allCategories }) {
             <div className={styles.greeting}>Hello,</div>
             <div className={styles.name}>Sjaak</div>
           </div>
+        </div>
+        <div className={styles.buttons}>
+          <button className={styles.button}><BiCalendar /></button>
+          <button className={styles.button}><BiBell /></button>
         </div>
       </header>
       <main className={styles.main}>
@@ -64,7 +69,7 @@ export default function Home({ allTodos, allCategories }) {
               categories={allCategories} 
             />
           ))}
-        <button className={`${styles.button} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
+        <button className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
       </main>
     </div>
   )
