@@ -23,7 +23,7 @@ export default function Home({ allTodos, allCategories }) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
       // TODO: Find out why sometimes scrollHeight is 1px off when changing styles. For example changing body line-height.
       // For now it is fixed by subtracting 1 off the scrollHeight.
-      if (scrollTop + clientHeight === scrollHeight - 1) {
+      if (scrollTop + clientHeight === scrollHeight) {
         setIsBottom(true)
       } else {
         setIsBottom(false)
@@ -54,9 +54,6 @@ export default function Home({ allTodos, allCategories }) {
           <title>Todo App</title>
           <meta name="description" content="React Todo app using https://my-json-server.typicode.com/" />
           <link rel="icon" href="/favicon.ico" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
         </Head>
 
         <header className={styles.header}>
