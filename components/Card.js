@@ -1,14 +1,14 @@
 import styles from '../styles/Card.module.scss'
 import { FiCheck } from 'react-icons/fi';
 
-export default function Card({ title, completed, description, categoryId, categories }) {
+export default function Card({ title, completed, description, categoryId, categories, onClick }) {
     const getCategory = (array, id) => {
         return array.find((element) => element.id === id)
     }
 
     return (  
       <>
-        <div className={`${styles.container} ${completed ? styles.completed : styles.uncompleted}`} style={{'--color-category': getCategory(categories, categoryId).color}}>
+        <div onClick={onClick} className={`${styles.container} ${completed ? styles.completed : styles.uncompleted}`} style={{'--color-category': getCategory(categories, categoryId).color}}>
             <div className={styles.top}>
                 <div className={styles.topText}>
                     <div className={styles.title}>{title}</div>

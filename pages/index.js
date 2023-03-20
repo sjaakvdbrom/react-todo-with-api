@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import Head from 'next/head'
 import 'swiper/css';
 import button from '../styles/Buttons.module.scss'
+import modal from '../styles/Modal.module.scss'
 import styles from '../styles/Home.module.scss'
 import { getAllTodos, getAllCategories } from '../lib/todos';
 import Card from '../components/Card';
@@ -13,6 +14,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 export default function Home({ allTodos, allCategories }) {
   const listInnerRef = useRef();
   const [isBottom, setIsBottom] = useState(false)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [isEditting, setIsEditting] = useState(false)
+  const [isAdding, setIsAdding] = useState(false)
 
   const onScroll = () => {
     if (listInnerRef.current) {
@@ -23,6 +27,22 @@ export default function Home({ allTodos, allCategories }) {
         setIsBottom(false)
       }
     }
+  }
+
+  const closeAllModals = () => {
+    setModalIsOpen(false)
+    setIsEditting(false)
+    setIsAdding(false)
+  }
+
+  const handleEditModal = () => {
+    setIsEditting(prev => !prev)
+    setModalIsOpen(prev => !prev)
+  }
+
+  const handleAddModal = () => {
+    setIsAdding(prev => !prev)
+    setModalIsOpen(prev => !prev)
   }
 
   return (
@@ -83,11 +103,29 @@ export default function Home({ allTodos, allCategories }) {
                 date={date} 
                 categoryId={categoryId} 
                 categories={allCategories} 
+                onClick={handleEditModal}
               />
             ))}
         </main>
       </div>
-      <button className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
+      <button onClick={handleAddModal} className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
+      {modalIsOpen && <div onClick={closeAllModals} className={modal.overlay}></div>}
+      <div className={`${modal.container} ${isEditting && modal.active}`}>
+        <header className={modal.header}>
+          <div onClick={closeAllModals} className={modal.top}></div>
+          Editting ToDo
+        </header>
+      </div>
+      <div className={`${modal.container} ${isAdding && modal.active}`}>
+        <header className={modal.header}>
+          <div onClick={closeAllModals} className={modal.top}></div>
+          <h2>Add new ToDo</h2>
+        </header>
+        <main>
+          <label>Title</label>
+          <input type='text' placeholder='Task name'></input>
+        </main>
+      </div>
     </div>
   )
 }
