@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Head from 'next/head'
 import 'swiper/css';
 import button from '../styles/Buttons.module.scss'
@@ -58,7 +58,7 @@ export default function Home({ allTodos, allCategories }) {
       // when the user releases the sheet, we check whether it passed
       // the threshold for it to close, or if we reset it to its open positino
       if (last) {
-        my > height * 0.5 || (vy > 0.5 && dy > 0) ? close(vy) : open({ canceled })
+        my > height * 0.2 || (vy > 0.3 && dy > 0) ? close(vy) : open({ canceled })
       }
       // when the user keeps dragging, we just move the sheet according to
       // the cursor position

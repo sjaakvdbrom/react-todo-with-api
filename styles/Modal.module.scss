@@ -5,7 +5,6 @@
   bottom: -100%;
   left: 0;
   height: calc(100% - 20px);
-  touch-action: none;
 
   &.active {
     bottom: 0;
@@ -51,6 +50,7 @@
   position: relative;
   padding-top: 23px;
   cursor: grab;
+  touch-action: none;
 
   &::before {
     content: '';
