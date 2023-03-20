@@ -23,7 +23,6 @@ export default function Home({ allTodos, allCategories }) {
     if (listInnerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
       // TODO: Find out why sometimes scrollHeight is 1px off when changing styles. For example changing body line-height.
-      // For now it is fixed by subtracting 1 off the scrollHeight.
       if (scrollTop + clientHeight === scrollHeight) {
         setIsBottom(true)
       } else {
@@ -124,7 +123,7 @@ export default function Home({ allTodos, allCategories }) {
       <div className={`${modal.container} ${isAdding && modal.active}`}>
         <header className={modal.header}>
           <div onClick={closeAllModals} className={modal.top}></div>
-          <h2 className={modal.title}>Add new ToDo</h2>
+          <h2 className={`${modal.title} ${typo.heading3}`}>Add new ToDo</h2>
         </header>
         <main className={modal.main}>
           <div className='form-inputs'>

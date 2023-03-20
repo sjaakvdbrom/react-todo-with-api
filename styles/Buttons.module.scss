@@ -2,6 +2,7 @@
     display: block;
     padding: 16px 40px;
     font-size: 18px;
+    line-height: 1;
     background-color: #3084fe;
     color: #fff;
     border: 0;
@@ -28,6 +29,7 @@
 
 .iconBefore {
     display: flex;
+    align-items: center;
     justify-content: center;
     gap: 15px;
 }
