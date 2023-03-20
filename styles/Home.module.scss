@@ -20,12 +20,6 @@
   }
 }
 
-.notBottom {
-  &::after {
-    opacity: 1;
-  }
-}
-
 .container {
   position: relative;
   width: 414px;
@@ -71,7 +65,6 @@
   font-weight: 600;
   font-size: 19px;
   line-height: 1;
-  color: #353638;
 }
 
 .buttons {
@@ -148,6 +141,12 @@
 }
 
 @media only screen and (min-width: 415px) {
+  .notBottom {
+    &::after {
+      opacity: 1;
+    }
+  }
+
   .wrapper {
     border-radius: 25px;
   }

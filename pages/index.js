@@ -21,7 +21,9 @@ export default function Home({ allTodos, allCategories }) {
   const onScroll = () => {
     if (listInnerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-      if (scrollTop + clientHeight === scrollHeight) {
+      // TODO: Find out why sometimes scrollHeight is 1px off when changing styles. For example changing body line-height.
+      // For now it is fixed by subtracting 1 off the scrollHeight.
+      if (scrollTop + clientHeight === scrollHeight - 1) {
         setIsBottom(true)
       } else {
         setIsBottom(false)
@@ -52,6 +54,9 @@ export default function Home({ allTodos, allCategories }) {
           <title>Todo App</title>
           <meta name="description" content="React Todo app using https://my-json-server.typicode.com/" />
           <link rel="icon" href="/favicon.ico" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
         </Head>
 
         <header className={styles.header}>
@@ -119,11 +124,20 @@ export default function Home({ allTodos, allCategories }) {
       <div className={`${modal.container} ${isAdding && modal.active}`}>
         <header className={modal.header}>
           <div onClick={closeAllModals} className={modal.top}></div>
-          <h2>Add new ToDo</h2>
+          <h2 className={modal.title}>Add new ToDo</h2>
         </header>
-        <main>
-          <label>Title</label>
-          <input type='text' placeholder='Task name'></input>
+        <main className={modal.main}>
+          <div className='form-inputs'>
+            <div className='form-control'>
+              <label htmlFor='add-title'>Title</label>
+              <input type='text' placeholder='Task name' id='add-title' />
+            </div>
+            <div className='form-control'>
+              <label htmlFor='add-description'>Description</label>
+              <textarea placeholder='Description text' id='add-description' rows='5' />
+            </div>
+          </div>
+          <button className={`${button.button} ${button.full}`}>Create</button>
         </main>
       </div>
     </div>

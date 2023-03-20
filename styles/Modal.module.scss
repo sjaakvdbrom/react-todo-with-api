@@ -1,10 +1,10 @@
 .container {
   position: absolute;
   z-index: 5;
-  height: 50%;
   right: 0;
   bottom: 0;
   left: 0;
+  padding: 0 30px 30px;
   background-color: #fff;
   transform: translateY(100%);
   transition: transform 0.25s ease;
@@ -16,22 +16,31 @@
 }
 
 .header {
+  margin-bottom: 22px;
   text-align: center;
+  border-bottom: 1px solid #e5e6e8;
+}
+
+.title {
+  margin-top: 17px;
+  margin-bottom: 24px;
+  font-size: 20px;
 }
 
 .overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 3;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
 }
 
 .top {
   position: relative;
-  padding-top: 30px;
+  padding-top: 23px;
   cursor: grab;
 
   &::before {
