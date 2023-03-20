@@ -1,7 +1,7 @@
 import styles from '../styles/Card.module.scss'
 import { FiCheck } from 'react-icons/fi';
 
-export default function Card({ title, completed, description, categoryId, categories, onClick }) {
+export default function Card({ title, completed, description, categoryId, categories, date, onClick }) {
     const getCategory = (array, id) => {
         return array.find((element) => element.id === id)
     }
@@ -21,7 +21,7 @@ export default function Card({ title, completed, description, categoryId, catego
                 <div className={styles.circle}></div>}
             </div>
             <div className={styles.bottom}>
-                Category: {getCategory(categories, categoryId).title}
+                <date className={styles.date}>{date}</date>
             </div>
         </div>
       </>

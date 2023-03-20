@@ -21,6 +21,7 @@ h6,
 p,
 a {
   font-size: 16px;
+  font-weight: normal;
   color: #353638;
 }
 
@@ -38,19 +39,6 @@ li {
   margin: 0;
 }
 
-.title {
-  color: #000;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @extend .title;
-}
-
 #__next {
   height: 100%;
   display: flex;
@@ -63,11 +51,9 @@ a {
   text-decoration: none;
 }
 
-button {
-  font-family: inherit;
-}
-
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -87,7 +73,6 @@ textarea {
   border-radius: 5px;
   border: none;
   outline-color: transparent;
-  font-family: inherit;
   font-size: 14px;
 }
 

@@ -1,3 +1,4 @@
+import 'normalize.css';
 import '../styles/globals.scss'
 import { Inter } from 'next/font/google'
 

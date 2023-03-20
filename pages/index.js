@@ -3,6 +3,7 @@ import Head from 'next/head'
 import 'swiper/css';
 import button from '../styles/Buttons.module.scss'
 import modal from '../styles/Modal.module.scss'
+import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Home.module.scss'
 import { getAllTodos, getAllCategories } from '../lib/todos';
 import Card from '../components/Card';
@@ -70,7 +71,7 @@ export default function Home({ allTodos, allCategories }) {
           </div>
         </header>
         <main className={styles.main}>
-          <h2 className={styles.title}>In Progress<span className={styles.amount}>{allTodos.length}</span></h2>
+          <h2 className={`${typo.heading3} ${styles.title}`}>In Progress<span className={styles.amount}>{allTodos.length}</span></h2>
           <Swiper
             className={styles.swiper}
             spaceBetween={30}
@@ -79,13 +80,15 @@ export default function Home({ allTodos, allCategories }) {
           >
             {allTodos
             .filter((item) => !item.completed)
-            .map(({ id, title, categoryId }) => (
+            .map(({ id, title, categoryId, date, description }) => (
               <SwiperSlide key={id} className={styles.swiperSlide}>
                 <div className={styles.swiperSlideInner}>
                   <LargeCard 
                     title={title}
                     categoryId={categoryId} 
-                    categories={allCategories} 
+                    categories={allCategories}
+                    date={date}
+                    description={description}
                   />
                 </div>
               </SwiperSlide>
@@ -93,7 +96,7 @@ export default function Home({ allTodos, allCategories }) {
             
           </Swiper>
             
-          <h2 className={styles.title}>Completed</h2>
+          <h2 className={`${typo.heading3} ${styles.title}`}>Completed</h2>
           {allTodos
             .filter((item) => item.completed).slice(0, 5)
             .map(({ id, title, description, date, completed, categoryId }) => (
