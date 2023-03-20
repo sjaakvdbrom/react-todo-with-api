@@ -27,12 +27,14 @@ export default function Home({ allTodos, allCategories }) {
       >
         {allTodos
         .filter((item) => !item.completed)
-        .map(({ id, title }) => (
+        .map(({ id, title, categoryId }) => (
           <SwiperSlide className={styles.swiperSlide}>
             <div className={styles.swiperSlideInner}>
               <LargeCard 
                 key={id} 
-                title={title} 
+                title={title}
+                categoryId={categoryId} 
+                categories={allCategories} 
               />
             </div>
           </SwiperSlide>
