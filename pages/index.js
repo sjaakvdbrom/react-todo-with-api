@@ -133,7 +133,7 @@ export default function Home({ allTodos, allCategories }) {
         </main>
       </div>
       <button onClick={open} className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
-      {modalIsOpen && <div onClick={() => close()} className={modal.overlay}></div>}
+      <div onClick={() => close()} className={`${modal.overlay} ${!modalIsOpen && modal.hide}`}></div>
 
       <a.div style={{ bottom: `calc(-100% + ${height - 100}px)`, y }} className={`${modal.drag}`}>
         <div className={`${modal.container}`}>

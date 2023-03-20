@@ -41,6 +41,13 @@
   z-index: 3;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(3px);
+  transition: opacity 0.5s;
+  opacity: 1;
+
+  &.hide {
+    opacity: 0;
+    pointer-events:none;
+  }
 }
 
 .top {
