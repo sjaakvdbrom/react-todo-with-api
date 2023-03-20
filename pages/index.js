@@ -117,7 +117,8 @@ export default function Home({ allTodos, allCategories }) {
             
           <h2 className={`${typo.heading3} ${styles.title}`}>Completed</h2>
           {allTodos
-            .filter((item) => item.completed).slice(0, 5)
+            .filter((item) => item.completed)
+            
             .map(({ id, title, description, date, time, completed, categoryId }) => (
               <Card 
                 key={id} 
