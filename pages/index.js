@@ -67,6 +67,11 @@ export default function Home({ allTodos, allCategories }) {
     { from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true }
   )
 
+  const bgStyle = {
+    '--opacity': y.to([0, height], [0.3, 0], 'clamp'),
+    '--blur': y.to([0, height], [3, 0], 'clamp')
+  }
+
   return (
     <div className={`${styles.wrapper} ${!isBottom && styles.notBottom}`}>
       <div className={styles.container} onScroll={() => onScroll()} ref={listInnerRef}>
@@ -118,7 +123,7 @@ export default function Home({ allTodos, allCategories }) {
           <h2 className={`${typo.heading3} ${styles.title}`}>Completed</h2>
           {allTodos
             .filter((item) => item.completed)
-            
+            .slice(0, 5)
             .map(({ id, title, description, date, time, completed, categoryId }) => (
               <Card 
                 key={id} 
@@ -134,7 +139,7 @@ export default function Home({ allTodos, allCategories }) {
         </main>
       </div>
       <button onClick={open} className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
-      <div onClick={() => close()} className={`${modal.overlay} ${!modalIsOpen && modal.hide}`}></div>
+      <a.div onClick={() => close()} className={`${modal.overlay} ${!modalIsOpen && modal.hide}`} style={bgStyle}></a.div>
 
       <a.div style={{ bottom: `calc(-100% + ${height - 100}px)`, y }} className={`${modal.drag}`}>
         <div className={`${modal.container}`}>
