@@ -3,11 +3,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; // Hide create button gradient
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 25%;
+    background: linear-gradient(transparent, #fafbfd 40%);
+    pointer-events: none;
+  }
 }
 
 .container {
   position: relative;
-  height: 896px;
   width: 414px;
   padding: 30px 30px 100px;
   background-color: #fafbfd;
@@ -79,6 +91,7 @@
 
 .create {
   position: absolute;
+  z-index: 3;
   bottom: 30px;
   width: calc(100% - 60px);
 }
@@ -127,7 +140,11 @@
 }
 
 @media only screen and (min-width: 415px) {
-  .container {
+  .wrapper {
     border-radius: 25px;
+  }
+
+  .container {
+    height: 896px;
   }
 }
