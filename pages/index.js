@@ -18,6 +18,8 @@ export default function Home({ allTodos, allCategories }) {
   const listInnerRef = useRef();
   const [isBottom, setIsBottom] = useState(false)
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const height = 570
+  const [{ y }, api] = useSpring(() => ({ y: height }))
 
   const onScroll = () => {
     if (listInnerRef.current) {
@@ -32,9 +34,6 @@ export default function Home({ allTodos, allCategories }) {
       }
     }
   }
-
-  const height = 450
-  const [{ y }, api] = useSpring(() => ({ y: height }))
 
   const open = ({ canceled }) => {
     // when cancel is true, it means that the user passed the upwards threshold
@@ -136,7 +135,7 @@ export default function Home({ allTodos, allCategories }) {
       <button onClick={open} className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
       {modalIsOpen && <div onClick={() => close()} className={modal.overlay}></div>}
 
-      <a.div style={{ bottom: `calc(-100vh + ${height - 100}px)`, y }} className={`${modal.drag}`}>
+      <a.div style={{ bottom: `calc(-100% + ${height - 100}px)`, y }} className={`${modal.drag}`}>
         <div className={`${modal.container}`}>
           <header className={modal.header}>
             <div {...bind()} className={modal.top}></div>
