@@ -74,7 +74,13 @@
     border-radius: 50%;
 }
 
-.date {
+.date,
+.time {
     color: #929395;
     font-size: 14px;
+}
+
+.dateTime {
+    display: flex;
+    gap: 15px;
 }
