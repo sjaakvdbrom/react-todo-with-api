@@ -7,8 +7,6 @@ export default function LargeCard({ title, categoryId, categories, date, descrip
         return array.find((element) => element.id === id)
     }
 
-    console.log(parseISO("2022-07-23"))
-
     return (  
       <div className={styles.container} style={{'--color-category': getCategory(categories, categoryId).color}}>
         <header className={styles.top}>
@@ -16,7 +14,7 @@ export default function LargeCard({ title, categoryId, categories, date, descrip
             {title}
           </div>
           <date className={styles.date}>
-            {date}
+            {date && format(parseISO(date), 'cccc, ee LLLL yyyy')}
           </date>
         </header>
         <main>
