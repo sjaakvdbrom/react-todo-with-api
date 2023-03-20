@@ -21,9 +21,11 @@ export default function Home({ allTodos, allCategories }) {
 
   const onScroll = () => {
     if (listInnerRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-      // TODO: Find out why sometimes scrollHeight is 1px off when changing styles. For example changing body line-height.
-      if (scrollTop + clientHeight === scrollHeight) {
+      const { scrollTop, clientHeight, scrollHeight } = listInnerRef.current;
+      // For some god forsaken reason the scrollHeight is off by 1. But only 'sometimes' like when the body has a certain line-height or in firefox.
+      // I'm guessing something with rounding half pixels down or whatever.
+      // To avoid any of that I subtract 1 from the scrollHeight to account for this.
+      if (scrollTop + clientHeight >= scrollHeight - 1) {
         setIsBottom(true)
       } else {
         setIsBottom(false)
