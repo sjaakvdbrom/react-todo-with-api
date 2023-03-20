@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import button from '../styles/Buttons.module.scss'
 import styles from '../styles/Home.module.scss'
-import { getAllTodos } from '../lib/todos';
+import { getAllTodos, getAllCategories } from '../lib/todos';
 import Card from '../components/Card';
 import { HiPlus } from 'react-icons/hi';
 
-export default function Home({ allTodos }) {
+export default function Home({ allTodos, allCategories }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +17,7 @@ export default function Home({ allTodos }) {
       <main className={styles.main}>
         <h2 className={styles.title}>Completed</h2>
         {allTodos.filter((item) => item.completed).slice(0, 5).map(({ id, title, description, date, completed, categoryId }) => (
-          <Card key={id} title={title} description={description} completed={completed} date={date} categoryId={categoryId} />
+          <Card key={id} title={title} description={description} completed={completed} date={date} categoryId={categoryId} categories={allCategories} />
         ))}
       <button className={`${styles.button} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
       </main>
@@ -27,9 +27,11 @@ export default function Home({ allTodos }) {
 
 export async function getStaticProps() {
   const allTodos = await getAllTodos();
+  const allCategories = await getAllCategories();
   return {
     props: {
       allTodos,
+      allCategories
     },
   };
 }
