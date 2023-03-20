@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import styles from '../styles/Card.module.scss'
 import { FiCheck } from 'react-icons/fi';
 

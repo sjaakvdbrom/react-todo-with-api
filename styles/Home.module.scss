@@ -17,3 +17,39 @@
   margin-bottom: 20px;
   font-size: 19px;
 }
+
+.swiper {
+  margin-right: -30px;
+  margin-left: -30px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.swiperWrapper {
+  height: auto;
+  align-items: stretch;
+}
+
+.swiperSlide {
+  display: flex;
+  height: auto;
+}
+
+.swiperSlideInner {
+  width: 100%;
+  display: flex;
+}
+
+.amount {
+  margin-left: 10px;
+  font-weight: 500;
+  color: #87888c;
+
+  &::before {
+    content: '('
+  }
+
+  &::after {
+    content: ')'
+  }
+}
