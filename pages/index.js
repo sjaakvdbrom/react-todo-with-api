@@ -16,8 +16,18 @@ export default function Home({ allTodos, allCategories }) {
 
       <main className={styles.main}>
         <h2 className={styles.title}>Completed</h2>
-        {allTodos.filter((item) => item.completed).slice(0, 5).map(({ id, title, description, date, completed, categoryId }) => (
-          <Card key={id} title={title} description={description} completed={completed} date={date} categoryId={categoryId} categories={allCategories} />
+        {allTodos
+        .filter((item) => item.completed).slice(0, 5)
+        .map(({ id, title, description, date, completed, categoryId }) => (
+          <Card 
+            key={id} 
+            title={title} 
+            description={description} 
+            completed={completed} 
+            date={date} 
+            categoryId={categoryId} 
+            categories={allCategories} 
+          />
         ))}
       <button className={`${styles.button} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
       </main>
