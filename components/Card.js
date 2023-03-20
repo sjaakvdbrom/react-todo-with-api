@@ -1,6 +1,6 @@
 import styles from '../styles/Card.module.scss'
 import { FiCheck } from 'react-icons/fi';
-import { format, parseISO, parse } from 'date-fns'
+import { format, parseISO, parse, isToday } from 'date-fns'
 
 export default function Card({ title, completed, description, categoryId, categories, date, onClick, time }) {
     const getCategory = (array, id) => {
@@ -22,7 +22,7 @@ export default function Card({ title, completed, description, categoryId, catego
             </div>
             <div className={styles.bottom}>
                 <div className={styles.dateTime}>
-                    {date && <date className={styles.date}>{format(parseISO(date), 'ee LLLL')}</date>}
+                    {date && <date className={styles.date}>{isToday(parseISO(date)) ? 'Today' : format(parseISO(date), 'ee LLLL')}</date>}
                     {time && <time className={styles.time}>{format(parse(time, 'HH:mm', new Date()), 'p')}</time>}
                 </div>
             </div>
