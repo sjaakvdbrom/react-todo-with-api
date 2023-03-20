@@ -8,7 +8,7 @@ export default function LargeCard({ title, categoryId, categories, date, descrip
     }
 
     return (  
-      <div className={styles.container} style={{'--color-category': getCategory(categories, categoryId).color}}>
+      <article className={styles.container} style={{'--color-category': getCategory(categories, categoryId).color}}>
         <header className={styles.top}>
           <div className={styles.title}>
             {title}
@@ -26,6 +26,6 @@ export default function LargeCard({ title, categoryId, categories, date, descrip
             </p>
           </>}
         </main>
-      </div>
+      </article>
     )
 }
