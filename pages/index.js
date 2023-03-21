@@ -1,32 +1,21 @@
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useRef, useState } from 'react';
 import Head from 'next/head'
 import 'swiper/css';
-import button from '../styles/Buttons.module.scss'
-import modal from '../styles/Modal.module.scss'
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Home.module.scss'
 import { getAllTodos, getAllCategories } from '../lib/todos';
 import Card from '../components/Card';
 import LargeCard from '../components/LargeCard';
-import { HiPlus } from 'react-icons/hi';
+import Modal from '../components/Modal';
+import button from '../styles/Buttons.module.scss'
 import { BiCalendar, BiBell } from 'react-icons/bi';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useDrag } from '@use-gesture/react'
-import { a, useSpring, config } from '@react-spring/web'
+
 
 export default function Home({ allTodos, allCategories }) {
   const listInnerRef = useRef();
-  const modalRef = useRef(null);
-  const [height, setHeight] = useState(1000);
   const [isBottom, setIsBottom] = useState(false)
-  const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [{ y }, api] = useSpring(() => ({ y: height }))
-
-  useLayoutEffect(() => {
-    const { height } = modalRef.current.getBoundingClientRect();
-    setHeight(height);
-  }, []);
-
+  
   const onScroll = () => {
     if (listInnerRef.current) {
       const { scrollTop, clientHeight, scrollHeight } = listInnerRef.current;
@@ -39,43 +28,6 @@ export default function Home({ allTodos, allCategories }) {
         setIsBottom(false)
       }
     }
-  }
-
-  const open = ({ canceled }) => {
-    // when cancel is true, it means that the user passed the upwards threshold
-    // so we change the spring config to create a nice wobbly effect
-    if (!canceled) {
-      setModalIsOpen(true)
-    }
-    api.start({ y: 0, immediate: false, config: canceled ? config.wobbly : config.stiff })
-  }
-
-  const close = (velocity = 0) => {
-    setModalIsOpen(false)
-    api.start({ y: height, immediate: false, config: { ...config.stiff, velocity } })
-  }
-
-  const bind = useDrag(
-    ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel, canceled }) => {
-      // if the user drags up passed a threshold, then we cancel
-      // the drag so that the sheet resets to its open position
-      if (my < -70) cancel()
-
-      // when the user releases the sheet, we check whether it passed
-      // the threshold for it to close, or if we reset it to its open positino
-      if (last) {
-        my > height * 0.2 || (vy > 0.3 && dy > 0) ? close(vy) : open({ canceled })
-      }
-      // when the user keeps dragging, we just move the sheet according to
-      // the cursor position
-      else api.start({ y: my, immediate: true })
-    },
-    { from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true }
-  )
-
-  const bgStyle = {
-    '--opacity': y.to([0, height], [0.3, 0], 'clamp'),
-    '--blur': y.to([0, height], [3, 0], 'clamp')
   }
 
   return (
@@ -144,30 +96,24 @@ export default function Home({ allTodos, allCategories }) {
             ))}
         </main>
       </div>
-      <button onClick={open} className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
-      <a.div onClick={() => close()} className={`${modal.overlay} ${!modalIsOpen && modal.hide}`} style={bgStyle}></a.div>
 
-      <a.div style={{ bottom: `calc(-100% + ${height - 100}px)`, y }} className={`${modal.drag}`}>
-        <div className={`${modal.container}`} ref={modalRef}>
-          <header className={modal.header}>
-            <div {...bind()} className={modal.top}></div>
-            <h2 className={`${modal.title} ${typo.heading3}`}>Add new ToDo</h2>
-          </header>
-          <main className={modal.main}>
-            <div className='form-inputs'>
-              <div className='form-control'>
-                <label htmlFor='add-title'>Title</label>
-                <input type='text' placeholder='Task name' id='add-title' />
-              </div>
-              <div className='form-control'>
-                <label htmlFor='add-description'>Description</label>
-                <textarea placeholder='Description text' id='add-description' rows='5' />
-              </div>
-            </div>
-            <button className={`${button.button} ${button.full}`}>Create</button>
-          </main>
+      <Modal title={'Test modal'}>
+        test
+      </Modal>
+      
+      <Modal title={'Add new ToDo'}>
+        <div className='form-inputs'>
+          <div className='form-control'>
+            <label htmlFor='add-title'>Title</label>
+            <input type='text' placeholder='Task name' id='add-title' />
+          </div>
+          <div className='form-control'>
+            <label htmlFor='add-description'>Description</label>
+            <textarea placeholder='Description text' id='add-description' rows='5' />
+          </div>
         </div>
-      </a.div>
+        <button className={`${button.button} ${button.full}`}>Create</button>
+      </Modal>
     </div>
   )
 }
