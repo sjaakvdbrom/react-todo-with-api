@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
 import Head from 'next/head'
 import 'swiper/css';
 import button from '../styles/Buttons.module.scss'
@@ -16,10 +16,16 @@ import { a, useSpring, config } from '@react-spring/web'
 
 export default function Home({ allTodos, allCategories }) {
   const listInnerRef = useRef();
+  const modalRef = useRef(null);
+  const [height, setHeight] = useState(1000);
   const [isBottom, setIsBottom] = useState(false)
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  const height = 570
   const [{ y }, api] = useSpring(() => ({ y: height }))
+
+  useLayoutEffect(() => {
+    const { height } = modalRef.current.getBoundingClientRect();
+    setHeight(height);
+  }, []);
 
   const onScroll = () => {
     if (listInnerRef.current) {
@@ -142,7 +148,7 @@ export default function Home({ allTodos, allCategories }) {
       <a.div onClick={() => close()} className={`${modal.overlay} ${!modalIsOpen && modal.hide}`} style={bgStyle}></a.div>
 
       <a.div style={{ bottom: `calc(-100% + ${height - 100}px)`, y }} className={`${modal.drag}`}>
-        <div className={`${modal.container}`}>
+        <div className={`${modal.container}`} ref={modalRef}>
           <header className={modal.header}>
             <div {...bind()} className={modal.top}></div>
             <h2 className={`${modal.title} ${typo.heading3}`}>Add new ToDo</h2>
