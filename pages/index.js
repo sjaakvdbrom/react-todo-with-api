@@ -3,18 +3,20 @@ import Head from 'next/head'
 import 'swiper/css';
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Home.module.scss'
-import { getAllTodos, getAllCategories } from '../lib/todos';
 import Card from '../components/Card';
 import LargeCard from '../components/LargeCard';
 import Modal from '../components/Modal';
 import button from '../styles/Buttons.module.scss'
 import { BiCalendar, BiBell } from 'react-icons/bi';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import useSWR from 'swr'
 
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Home({ allTodos, allCategories }) {
   const listInnerRef = useRef();
   const [isBottom, setIsBottom] = useState(false)
+  const { data, error } = useSWR('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/todos', fetcher)
   
   const onScroll = () => {
     if (listInnerRef.current) {
@@ -29,6 +31,9 @@ export default function Home({ allTodos, allCategories }) {
       }
     }
   }
+
+  if (error) return <div>Failed to load</div>
+  if (!data) return <div>Loading...</div>
 
   return (
     <div className={`${styles.wrapper} ${!isBottom && styles.notBottom}`}>
@@ -53,14 +58,14 @@ export default function Home({ allTodos, allCategories }) {
           </div>
         </header>
         <main className={styles.main}>
-          <h2 className={`${typo.heading3} ${styles.title}`}>In Progress<span className={styles.amount}>{allTodos.length}</span></h2>
+          <h2 className={`${typo.heading3} ${styles.title}`}>In Progress<span className={styles.amount}>{data.length}</span></h2>
           <Swiper
             className={styles.swiper}
             spaceBetween={30}
             slidesPerView={1.13}
             wrapperClass={styles.swiperWrapper}
           >
-            {allTodos
+            {data
             .filter((item) => !item.completed)
             .map(({ id, title, categoryId, date, description }) => (
               <SwiperSlide key={id} className={styles.swiperSlide}>
@@ -79,7 +84,7 @@ export default function Home({ allTodos, allCategories }) {
           </Swiper>
             
           <h2 className={`${typo.heading3} ${styles.title}`}>Completed</h2>
-          {allTodos
+          {data
             .filter((item) => item.completed)
             .slice(0, 5)
             .map(({ id, title, description, date, time, completed, categoryId }) => (
@@ -116,15 +121,4 @@ export default function Home({ allTodos, allCategories }) {
       </Modal>
     </div>
   )
-}
-
-export async function getStaticProps() {
-  const allTodos = await getAllTodos();
-  const allCategories = await getAllCategories();
-  return {
-    props: {
-      allTodos,
-      allCategories
-    },
-  };
 }
