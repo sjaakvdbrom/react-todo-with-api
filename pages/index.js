@@ -159,6 +159,18 @@ export default function Home() {
               <label htmlFor='add-description'>Description</label>
               <textarea value={formDescription} onChange={(e) => setFormDescription(e.target.value)} placeholder='Description text' id='add-description' rows='5' />
             </div>
+            <div className='form-control'>
+              <label htmlFor='add-description'>Category</label>
+              {categories && 
+                <select>
+                  {categories.map(({ id, title }) => (
+                    <option key={id}>
+                      {title}
+                    </option>
+                  ))}
+                </select>
+              }
+            </div>
           </div>
           <button className={`${button.button} ${button.full}`}>Create</button>
         </form>
