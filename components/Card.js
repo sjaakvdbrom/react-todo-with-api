@@ -1,18 +1,14 @@
 import styles from '../styles/Card.module.scss'
 import { FiCheck } from 'react-icons/fi';
 import { format, parseISO, parse, isToday } from 'date-fns'
-import useSWR from 'swr'
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Card({ title, completed, description, categoryId, categories, date, time }) {
-    const { data, error } = useSWR(`https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/categories/${categoryId}`, fetcher)
-
-    if (error) return <div>Failed to load</div>
-    if (!data) return <div>Loading...</div>
+    const getCategory = (array, id) => {
+        return array.find((element) => element.id === id)
+    }
 
     return (  
-        <article className={`${styles.container} ${completed ? styles.completed : styles.uncompleted}`} style={{'--color-category': data.color}}>
+        <article className={`${styles.container} ${completed ? styles.completed : styles.uncompleted}`} style={{'--color-category': getCategory(categories, categoryId).color}}>
             <div className={styles.top}>
                 <div className={styles.topText}>
                     <div className={styles.title}>{title}</div>

@@ -1,18 +1,14 @@
 import styles from '../styles/LargeCard.module.scss'
 import typo from '../styles/Typography.module.scss'
 import { format, parseISO } from 'date-fns'
-import useSWR from 'swr'
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function LargeCard({ title, categoryId, categories, date, description }) {
-    const { data, error } = useSWR(`https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/categories/${categoryId}`, fetcher)
-
-    if (error) return <div>Failed to load</div>
-    if (!data) return <div>Loading...</div>
+    const getCategory = (array, id) => {
+        return array.find((element) => element.id === id)
+    }
 
     return (  
-      <article className={styles.container} style={{'--color-category': data.color}}>
+      <article className={styles.container} style={{'--color-category': getCategory(categories, categoryId).color}}>
         <header className={styles.top}>
           <div className={styles.title}>
             {title}
