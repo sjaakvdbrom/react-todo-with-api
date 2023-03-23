@@ -102,6 +102,24 @@ select {
   }
 }
 
+.mt-0 {
+  margin-top: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+@for $i from 1 through 10 {
+  .mt-#{$i} {
+    margin-top: #{$i * 5}px;
+  }
+
+  .mb-#{$i} {
+      margin-bottom: #{$i * 5}px;
+  }
+}
+
 @media only screen and (min-width: 415px) {
   #__next {
     padding: 30px;

@@ -60,7 +60,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`${page.wrapper} ${styles.wrapper} ${!isBottom && styles.notBottom}`}>
-        <div className={page.container} onScroll={() => onScroll()} ref={listInnerRef}>
+        <div className={`${page.container} ${styles.container}`} onScroll={() => onScroll()} ref={listInnerRef}>
           
 
           <header className={styles.header}>

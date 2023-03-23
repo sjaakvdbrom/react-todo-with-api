@@ -5,8 +5,7 @@ import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { TbDotsVertical } from 'react-icons/tb';
-import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, isToday, isEqual, getDate } from 'date-fns'
-import { v4 as uuidv4 } from 'uuid';
+import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, eachHourOfInterval, isEqual, getDate, endOfToday } from 'date-fns'
 import button from '../styles/Buttons.module.scss'
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Calendar.module.scss'
@@ -20,6 +19,10 @@ export default function Calendar() {
     let days = eachDayOfInterval({
         start: firstDayCurrentMonth,
         end: endOfMonth(firstDayCurrentMonth),
+    })
+    const timeline = eachHourOfInterval({
+        start: startOfToday(),
+        end: endOfToday()
     })
 
     return (
@@ -55,6 +58,17 @@ export default function Calendar() {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
+                        <h2 className={`${typo.heading3} mb-3`}>Timeline</h2>
+                        <div className={styles.timeline}>
+                            {timeline.map((hour) => (
+                                <div key={hour.toString()} className={styles.hour}>
+                                    <div className={styles.hourText}>{format(hour, 'hh:mm a')}</div>
+                                    <div className={styles.spot}>
+                                        {format(hour, 'HH:mm') === '12:00' && <div className={styles.hourCard}>okjasd fojasop</div>}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </main>
                 </div>
             </div>

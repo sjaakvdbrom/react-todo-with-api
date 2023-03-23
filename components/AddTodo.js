@@ -32,6 +32,13 @@ export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  
         setSelectedFormCategory(Number(event))
     }
 
+    const handleCancel = () => {
+      setFormTitle('')
+      setFormDescription('')
+      setSelectedFormCategory(0)
+      setAddTodoModalVisible(false)
+    }
+
     return (  
         <form onSubmit={handleAddTodo}>
           <div className='form-inputs'>
@@ -61,7 +68,7 @@ export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  
             </div>
           </div>
           <div className={button.grid}>
-            <button onClick={() => setAddTodoModalVisible(false)} type='button' className={`${button.button} ${button.ghost} ${button.full}`}>Cancel</button>
+            <button onClick={handleCancel} type='button' className={`${button.button} ${button.ghost} ${button.full}`}>Cancel</button>
             <button className={`${button.button} ${button.full}`}>Create</button>
           </div>
         </form>

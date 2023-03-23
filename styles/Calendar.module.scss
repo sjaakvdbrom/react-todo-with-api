@@ -32,3 +32,49 @@
 .day {
   font-size: 14px;
 }
+
+.hour {
+  display: flex;
+  
+  &:not(:last-child) {
+    margin-bottom: 25px;
+  }
+}
+
+.hourText {
+  margin-right: 15px;
+  color: #7e7f84;
+  font-size: 14px;
+}
+
+.spot {
+  position: relative;
+  flex: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background-color: #eeeef0;
+  }
+}
+
+.hourCard {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 20%;
+  z-index: 1;
+  padding: 15px;
+  transform: translateY(-50%);
+  background-color: #3084fe;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
