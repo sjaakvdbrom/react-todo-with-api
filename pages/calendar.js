@@ -55,7 +55,7 @@ export default function Calendar() {
                     </header>
                     <main>
                         <Swiper
-                            className={swiper.swiper}
+                            className={`${styles.swiper} ${swiper.swiper}`}
                             slidesPerView={4.25}
                             initialSlide={getDate(today) - 1}
                         >
@@ -64,11 +64,11 @@ export default function Calendar() {
                                 className={styles.slide}
                                 key={day.toString()}
                                 >
-                        
                                     <time onClick={() => setSelectedDay(day)} className={`
                                     ${styles.dayBox}
                                     ${isEqual(day, selectedDay) && styles.today}
                                     `} dateTime={format(day, 'yyyy-MM-dd')}>
+                                        {todos && todos.filter((item) => item.date === format(day, 'yyyy-MM-dd')).length ? <div className={styles.bubble} /> : '' }
                                         <div className={styles.number}>{format(day, 'd')}</div>
                                         <div className={styles.day}>{format(day, 'E')}</div>
                                         
