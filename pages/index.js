@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.scss'
 import Card from '../components/Card';
 import LargeCard from '../components/LargeCard';
 import Modal from '../components/Modal';
+import Select from '../components/Select';
 import button from '../styles/Buttons.module.scss'
 import { BiCalendar, BiBell } from 'react-icons/bi';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,6 +22,7 @@ export default function Home() {
   const [categoryLoading, setCategoryLoading] = useState(false)
   const [formTitle, setFormTitle] = useState('')
   const [formDescription, setFormDescription] = useState('')
+  const [selectedFormCategory, setSelectedFormCategory] = useState(0)
 
   useEffect(() => {
     setTodoLoading(true)
@@ -68,6 +70,11 @@ export default function Home() {
 
     setFormTitle('')
     setFormDescription('')
+    setSelectedFormCategory(0)
+  }
+
+  const handleFormCategory = (event) => {
+    setSelectedFormCategory(event)
   }
 
   if (todoLoading) return <p>Loading...</p>
@@ -153,7 +160,7 @@ export default function Home() {
           <div className='form-inputs'>
             <div className='form-control'>
               <label htmlFor='add-title'>Title</label>
-              <input type='text' value={formTitle} onChange={(e) => setFormTitle(e.target.value)} placeholder='Task name' id='add-title' />
+              <input type='text' value={formTitle} onChange={(e) => setFormTitle(e.target.value)} placeholder='Task name' id='add-title' required />
             </div>
             <div className='form-control'>
               <label htmlFor='add-description'>Description</label>
@@ -162,13 +169,17 @@ export default function Home() {
             <div className='form-control'>
               <label htmlFor='add-description'>Category</label>
               {categories && 
-                <select>
-                  {categories.map(({ id, title }) => (
-                    <option key={id}>
-                      {title}
+                <Select
+                  value={selectedFormCategory}
+                  onChange={e => handleFormCategory(e.target.value)}
+                >
+                  <option style={{display: 'none'}} disabled defaultValue value='0'>Choose a category</option>
+                  {categories.map(o => (
+                    <option key={uuidv4()} value={o.id}>
+                      {o.title}
                     </option>
                   ))}
-                </select>
+                </Select>
               }
             </div>
           </div>

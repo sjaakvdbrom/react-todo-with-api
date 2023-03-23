@@ -80,6 +80,18 @@ textarea {
   resize: none;
 }
 
+select {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #eff3f4;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  appearance: none;
+  outline-color: transparent;
+  cursor: pointer;
+}
+
 .form-inputs {
   margin-bottom: 30px;
 }
