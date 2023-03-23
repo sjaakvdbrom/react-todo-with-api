@@ -72,8 +72,8 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.buttons}>
-              <Link href="/calendar"><button className={styles.button}><BiCalendar /></button></Link>
-              <button className={styles.button}><BiBell /></button>
+              <Link href="/calendar"><button className={button.icon}><BiCalendar /></button></Link>
+              <button className={button.icon}><BiBell /></button>
             </div>
           </header>
           <main>

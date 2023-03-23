@@ -26,6 +26,24 @@
     }
 }
 
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
+    width: 46px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #eceff4;
+    font-size: 20px;
+    color: #333438;
+    cursor: pointer;
+  
+    &:hover {
+      border-color: #dbdde0;
+    }
+  }
+
 .full {
     width: 100%;
 }
