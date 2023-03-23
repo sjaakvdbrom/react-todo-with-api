@@ -20,12 +20,10 @@ export default function Calendar() {
     let [selectedDay, setSelectedDay] = useState(today)
     let [selectedMonth, setSelectedMonth] = useState(getMonth(today))
     let [selectedYear, setSelectedYear] = useState(getYear(today))
-    let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
     let [todosToday, setTodosToday] = useState(null)
-    let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
-    let days = eachDayOfInterval({
-        start: firstDayCurrentMonth,
-        end: endOfMonth(firstDayCurrentMonth),
+    let days = eachDayOfInterval({ // TODO: include the selectedYear aswell
+        start: parse(selectedMonth + 1, 'M', new Date()),
+        end: endOfMonth(parse(selectedMonth + 1, 'M', new Date())),
     })
     const timeline = eachHourOfInterval({
         start: startOfToday(),
@@ -36,6 +34,11 @@ export default function Calendar() {
         start: startOfYear(selectedYear),
         end: endOfYear(selectedYear)
     })
+
+    const handleMonthSelect = (e) => {
+        setSelectedDay(today)
+        setSelectedMonth(Number(e.target.value))
+    }
 
     useEffect(() => {
         fetch('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/todos')
@@ -65,7 +68,7 @@ export default function Calendar() {
                         <button className={button.icon} title='Go back'><TbDotsVertical /></button>
                     </header>
                     <main>
-                        <Select className={styles.select} selectClassName={styles.selecter} value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+                        <Select className={styles.select} selectClassName={styles.selecter} value={selectedMonth} onChange={handleMonthSelect}>
                             {months.map((month, index) => (
                                 <option key={uuidv4()} value={index}>{format(month, 'LLLL')}</option>
                             ))}
@@ -93,7 +96,7 @@ export default function Calendar() {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
-                        <h2 className={`${typo.heading3} mb-3`}>Timeline</h2>
+                        <h2 className={`${typo.heading3} mb-4`}>Timeline</h2>
                         <div className={styles.timeline}>
                             {timeline.map((hour) => (
                                 <div key={hour.toString()} className={styles.hour}>
