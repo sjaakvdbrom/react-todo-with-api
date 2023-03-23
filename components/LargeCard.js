@@ -3,6 +3,8 @@ import typo from '../styles/Typography.module.scss'
 import { format, parseISO } from 'date-fns'
 
 export default function LargeCard({ title, categoryId, categories, date, description }) {
+    if (!categories) return
+
     const getCategory = (array, id) => {
         return array.find((element) => element.id === id)
     }

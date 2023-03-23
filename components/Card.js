@@ -3,6 +3,8 @@ import { FiCheck } from 'react-icons/fi';
 import { format, parseISO, parse, isToday } from 'date-fns'
 
 export default function Card({ title, completed, description, categoryId, categories, date, time }) {
+    if (!categories) return
+
     const getCategory = (array, id) => {
         return array.find((element) => element.id === id)
     }

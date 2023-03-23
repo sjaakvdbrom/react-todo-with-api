@@ -140,6 +140,27 @@
   width: calc(100% - 60px);
 }
 
+.loading {
+  margin-bottom: 25px;
+  line-height: 0;
+
+  svg {
+    color: #898b93;
+    font-size: 24px;
+    animation: loading 0.75s linear infinite;
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media only screen and (min-width: 415px) {
   .notBottom {
     &::after {

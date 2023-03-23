@@ -4,7 +4,7 @@ import button from '../styles/Buttons.module.scss'
 import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns'
 
-export default function Card({ setTodos, categories, setAddTodoModalVisible  }) {
+export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  }) {
     const [formTitle, setFormTitle] = useState('')
     const [formDescription, setFormDescription] = useState('')
     const [selectedFormCategory, setSelectedFormCategory] = useState(0)
