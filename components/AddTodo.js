@@ -9,28 +9,28 @@ export default function Card({ setTodos, categories, setAddTodoModalVisible  }) 
     const [formDescription, setFormDescription] = useState('')
     const [selectedFormCategory, setSelectedFormCategory] = useState(0)
 
-    const handleAddTodo= (event) => {
+    const handleAddTodo = (event) => {
         event.preventDefault();
-    
+
         setTodos(oldArray => [...oldArray,{
-          id: uuidv4(),
-          title: formTitle,
-          description: formDescription,
-          date: format(new Date, 'yyyy-MM-d'),
-          time: format(new Date, 'HH:mm'),
-          completed: false,
-          categoryId: 1
+            id: uuidv4(),
+            title: formTitle,
+            description: formDescription,
+            date: format(new Date, 'yyyy-MM-d'),
+            time: format(new Date, 'HH:mm'),
+            completed: false,
+            categoryId: selectedFormCategory
         }])
-    
+
         setFormTitle('')
         setFormDescription('')
         setSelectedFormCategory(0)
         setAddTodoModalVisible(false)
-      }
-    
-      const handleFormCategory = (event) => {
-        setSelectedFormCategory(event)
-      }
+    }
+
+    const handleFormCategory = (event) => {
+        setSelectedFormCategory(Number(event))
+    }
 
     return (  
         <form onSubmit={handleAddTodo}>
