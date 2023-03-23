@@ -3,6 +3,7 @@ import LargeCard from '../components/LargeCard';
 import { BiLoaderAlt } from 'react-icons/bi';
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Home.module.scss'
+import swiper from '../styles/Swiper.module.scss'
 
 export default function InProgressTodos({ todos, categories, todoLoading }) {
 
@@ -12,7 +13,7 @@ export default function InProgressTodos({ todos, categories, todoLoading }) {
             {todoLoading && <div className={styles.loading}><BiLoaderAlt /></div>}
             {todos && 
             <Swiper
-                className={styles.swiper}
+                className={swiper.swiper}
                 spaceBetween={30}
                 slidesPerView={1.13}
                 wrapperClass={styles.swiperWrapper}

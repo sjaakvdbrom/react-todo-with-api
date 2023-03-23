@@ -1,9 +1,23 @@
 .dayBox {
+  display: block;
   padding: 15px 10px;
   background-color: #eaebef;
   border-radius: 5px;
   text-align: center;
   line-height: 1;
+
+  &.today {
+    background-color: #3084fe;
+    color: #fff;
+  }
+
+  &:not(.today) {
+    cursor: pointer;
+
+    &:hover {
+      
+    }
+  }
 }
 
 .number {
