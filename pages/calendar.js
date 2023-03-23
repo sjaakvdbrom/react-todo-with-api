@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { TbDotsVertical } from 'react-icons/tb';
 import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, eachHourOfInterval, isEqual, getDate, endOfToday, roundToNearestMinutes } from 'date-fns'
+import { v4 as uuidv4 } from 'uuid';
 import button from '../styles/Buttons.module.scss'
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Calendar.module.scss'
@@ -83,7 +84,7 @@ export default function Calendar() {
                                 <div key={hour.toString()} className={styles.hour}>
                                     <div className={styles.hourText}>{format(hour, 'hh:mm a')}</div>
                                     <div className={styles.spot}>
-                                        {todosToday && todosToday.filter((item) => format(roundToNearestMinutes(parse(item.time, 'HH:mm', new Date()), { nearestTo: 30 }), 'HH:mm') === format(hour, 'HH:mm')).map(item => <div className={styles.hourCard}>{item.title}</div>)}
+                                        {todosToday && todosToday.filter((item) => format(roundToNearestMinutes(parse(item.time, 'HH:mm', new Date()), { nearestTo: 30 }), 'HH:mm') === format(hour, 'HH:mm')).map(item => <div key={uuidv4()} className={styles.hourCard}>{item.title}</div>)}
                                     </div>
                                 </div>
                             ))}
