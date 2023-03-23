@@ -2,11 +2,22 @@ import styles from '../styles/Card.module.scss'
 import { FiCheck } from 'react-icons/fi';
 import { format, parseISO, parse, isToday } from 'date-fns'
 
-export default function Card({ title, completed, description, categoryId, categories, date, time }) {
+export default function Card({ id, title, completed, description, categoryId, categories, date, time, todos, setTodos }) {
     if (!categories) return
 
     const getCategory = (array, id) => {
         return array.find((element) => element.id === id)
+    }
+
+    const handleUncomplete = () => {
+        setTodos(
+            todos.map((todo) => {
+              if (todo.id === id) {
+                todo.completed = false;
+              }
+              return todo;
+            })
+          );
     }
 
     return (  
@@ -17,7 +28,7 @@ export default function Card({ title, completed, description, categoryId, catego
                     <div className={styles.description}>{description}</div>
                 </div>
                 {completed ? 
-                <div className={styles.icon}>
+                <div className={styles.icon} onClick={handleUncomplete}>
                     <FiCheck />
                 </div> : 
                 <div className={styles.circle}></div>}

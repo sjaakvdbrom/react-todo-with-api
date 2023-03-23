@@ -3,7 +3,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Home.module.scss'
 
-export default function CompletedTodos({ todos, categories, todoLoading }) {
+export default function CompletedTodos({ todos, categories, todoLoading, setTodos }) {
 
     return (  
         <>
@@ -16,6 +16,7 @@ export default function CompletedTodos({ todos, categories, todoLoading }) {
                 .map(({ id, title, description, date, time, completed, categoryId }) => (
                 <Card 
                     key={id} 
+                    id={id}
                     title={title} 
                     description={description} 
                     completed={completed} 
@@ -23,6 +24,8 @@ export default function CompletedTodos({ todos, categories, todoLoading }) {
                     time={time}
                     categoryId={categoryId}
                     categories={categories}
+                    todos={todos}
+                    setTodos={setTodos}
                 />
                 ))}
         </>

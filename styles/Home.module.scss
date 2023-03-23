@@ -1,10 +1,4 @@
 .wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden; // Hide create button gradient
-
   &::after {
     content: '';
     position: absolute;
@@ -17,19 +11,6 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.15s ease;
-  }
-}
-
-.container {
-  position: relative;
-  width: 414px;
-  padding: 30px 30px 100px;
-  background-color: #fafbfd;
-  overflow: auto;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
   }
 }
 
@@ -166,13 +147,5 @@
     &::after {
       opacity: 1;
     }
-  }
-
-  .wrapper {
-    border-radius: 25px;
-  }
-
-  .container {
-    height: 896px;
   }
 }

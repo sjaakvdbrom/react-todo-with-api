@@ -8,7 +8,7 @@ export default function InProgressTodos({ todos, categories, todoLoading }) {
 
     return (  
         <>
-            <h2 className={`${typo.heading3} ${styles.title}`}>In Progress{todos && <span className={styles.amount}>{todos.length}</span>}</h2>
+            <h2 className={`${typo.heading3} ${styles.title}`}>In Progress{todos && <span className={styles.amount}>{todos.filter((item) => !item.completed).length}</span>}</h2>
             {todoLoading && <div className={styles.loading}><BiLoaderAlt /></div>}
             {todos && 
             <Swiper

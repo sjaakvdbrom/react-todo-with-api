@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
+import Link from 'next/link'
 import Head from 'next/head'
 import 'swiper/css';
+import page from '../styles/Page.module.scss'
 import styles from '../styles/Home.module.scss'
 import Modal from '../components/Modal';
 import AddTodo from '../components/AddTodo';
@@ -51,46 +53,49 @@ export default function Home() {
   }
 
   return (
-    <div className={`${styles.wrapper} ${!isBottom && styles.notBottom}`}>
-      <div className={styles.container} onScroll={() => onScroll()} ref={listInnerRef}>
-        <Head>
-          <title>Todo App</title>
-          <meta name="description" content="React Todo app using https://my-json-server.typicode.com/" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+    <>
+      <Head>
+        <title>Todo App</title>
+        <meta name="description" content="React Todo app using https://my-json-server.typicode.com/" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className={`${page.wrapper} ${styles.wrapper} ${!isBottom && styles.notBottom}`}>
+        <div className={page.container} onScroll={() => onScroll()} ref={listInnerRef}>
+          
 
-        <header className={styles.header}>
-          <div className={styles.intro}>
-            <div className={styles.avatar}></div>
-            <div>
-              <div className={styles.greeting}>Hello,</div>
-              <div className={styles.name}>Sjaak</div>
+          <header className={styles.header}>
+            <div className={styles.intro}>
+              <div className={styles.avatar}></div>
+              <div>
+                <div className={styles.greeting}>Hello,</div>
+                <div className={styles.name}>Sjaak</div>
+              </div>
             </div>
-          </div>
-          <div className={styles.buttons}>
-            <button className={styles.button}><BiCalendar /></button>
-            <button className={styles.button}><BiBell /></button>
-          </div>
-        </header>
-        <main className={styles.main}>
-          <InProgressTodos todos={todos} categories={categories} todoLoading={todoLoading} />
-          <CompletedTodos todos={todos} categories={categories} todoLoading={todoLoading} />
-        </main>
+            <div className={styles.buttons}>
+              <Link href="/calendar"><button className={styles.button}><BiCalendar /></button></Link>
+              <button className={styles.button}><BiBell /></button>
+            </div>
+          </header>
+          <main>
+            <InProgressTodos todos={todos} categories={categories} todoLoading={todoLoading} />
+            <CompletedTodos todos={todos} setTodos={setTodos} categories={categories} todoLoading={todoLoading} />
+          </main>
+        </div>
+
+        <button onClick={() => setAddTodoModalVisible(true)} className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
+
+        <Modal title={'Test modal'}>
+          test
+        </Modal>
+        
+        <Modal title={'Add new ToDo'} addTodoModalVisible={addTodoModalVisible} setAddTodoModalVisible={setAddTodoModalVisible}>
+          <AddTodo 
+          setTodos={setTodos}
+          categories={categories}
+          setAddTodoModalVisible={setAddTodoModalVisible}
+          />
+        </Modal>
       </div>
-
-      <button onClick={() => setAddTodoModalVisible(true)} className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
-
-      <Modal title={'Test modal'}>
-        test
-      </Modal>
-      
-      <Modal title={'Add new ToDo'} addTodoModalVisible={addTodoModalVisible} setAddTodoModalVisible={setAddTodoModalVisible}>
-        <AddTodo 
-        setTodos={setTodos}
-        categories={categories}
-        setAddTodoModalVisible={setAddTodoModalVisible}
-        />
-      </Modal>
-    </div>
+    </>
   )
 }

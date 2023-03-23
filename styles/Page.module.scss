@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 414px;
+  padding: 30px 30px 100px;
+  background-color: #fafbfd;
+  overflow: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 415px) {
+  .wrapper {
+    border-radius: 25px;
+  }
+
+  .container {
+    height: 896px;
+  }
+}

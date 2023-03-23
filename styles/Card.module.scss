@@ -65,6 +65,11 @@
     background-color: #3084fe;
     border-radius: 50%;
     font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #2e80f7;
+    }
 }
 
 .circle {
