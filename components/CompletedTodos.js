@@ -8,7 +8,7 @@ export default function CompletedTodos({ todos, categories, todoLoading, setTodo
         <>
             <h2 className={`${typo.heading3} ${styles.title}`}>Completed{todos && <span className={styles.amount}>{todos.filter((item) => item.completed).length}</span>}</h2>
             {todoLoading && <div className={styles.loading}><BiLoaderAlt /></div>}
-            {todos && todos.filter((item) => item.completed).length === 0 && <div>You haven't completed any todos yet.</div>}
+            {todos && todos.filter((item) => item.completed).length === 0 && <div>You haven&apos;t completed any todos yet.</div>}
             {todos && todos
                 .filter((item) => item.completed)
                 .reverse()

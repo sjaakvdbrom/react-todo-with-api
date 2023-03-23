@@ -10,15 +10,6 @@ export default function Modal(props) {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [{ y }, api] = useSpring(() => ({ y: height }))
 
-    useEffect(() => {
-        if (props.addTodoModalVisible === true) {
-            open(false)
-        }
-        if (props.addTodoModalVisible === false) {
-            close()
-        }
-    },[props.addTodoModalVisible])
-
     useLayoutEffect(() => {
         const { height } = modalRef.current.getBoundingClientRect();
         setHeight(height);
@@ -61,6 +52,15 @@ export default function Modal(props) {
     '--opacity': y.to([0, height], [0.3, 0], 'clamp'),
     '--blur': y.to([0, height], [3, 0], 'clamp')
     }
+
+    useEffect(() => {
+        if (props.addTodoModalVisible === true) {
+            open(false)
+        }
+        if (props.addTodoModalVisible === false) {
+            close()
+        }
+    },[props.addTodoModalVisible, open, close])
 
     return (  
       <>
