@@ -20,9 +20,9 @@ export default function Modal(props) {
     },[props.addTodoModalVisible])
 
     useLayoutEffect(() => {
-    const { height } = modalRef.current.getBoundingClientRect();
-    setHeight(height);
-    }, []);
+        const { height } = modalRef.current.getBoundingClientRect();
+        setHeight(height);
+    }, [modalIsOpen]);
 
     const open = ({ canceled }) => {
         // when cancel is true, it means that the user passed the upwards threshold
