@@ -1,20 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import page from '../styles/Page.module.scss'
 import Link from 'next/link'
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { TbDotsVertical } from 'react-icons/tb';
-import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, eachHourOfInterval, isEqual, getDate, endOfToday } from 'date-fns'
+import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, eachHourOfInterval, isEqual, getDate, endOfToday, roundToNearestMinutes } from 'date-fns'
 import button from '../styles/Buttons.module.scss'
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Calendar.module.scss'
 import swiper from '../styles/Swiper.module.scss'
 
 export default function Calendar() {
+    const [todos, setTodos] = useState(null)
+    const [categories, setCategories] = useState(null)
     let today = startOfToday()
     let [selectedDay, setSelectedDay] = useState(today)
     let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
+    let [todosToday, setTodosToday] = useState(null)
     let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
     let days = eachDayOfInterval({
         start: firstDayCurrentMonth,
@@ -24,6 +27,22 @@ export default function Calendar() {
         start: startOfToday(),
         end: endOfToday()
     })
+    useEffect(() => {
+    fetch('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/todos')
+        .then((res) => res.json())
+        .then((data) => {
+        setTodos(data)
+        });
+    fetch('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/categories')
+        .then((res) => res.json())
+        .then((data) => {
+        setCategories(data)
+        })
+    }, [])
+    useEffect(() => {
+        if (!todos) return
+        setTodosToday(todos.filter((item) => item.date === format(selectedDay, 'yyyy-MM-dd')))
+    }, [todos, selectedDay])
 
     return (
         <>
@@ -64,7 +83,7 @@ export default function Calendar() {
                                 <div key={hour.toString()} className={styles.hour}>
                                     <div className={styles.hourText}>{format(hour, 'hh:mm a')}</div>
                                     <div className={styles.spot}>
-                                        {format(hour, 'HH:mm') === '12:00' && <div className={styles.hourCard}>okjasd fojasop</div>}
+                                        {todosToday && todosToday.filter((item) => format(roundToNearestMinutes(parse(item.time, 'HH:mm', new Date()), { nearestTo: 30 }), 'HH:mm') === format(hour, 'HH:mm')).map(item => <div className={styles.hourCard}>{item.title}</div>)}
                                     </div>
                                 </div>
                             ))}

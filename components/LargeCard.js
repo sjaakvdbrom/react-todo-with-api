@@ -16,7 +16,7 @@ export default function LargeCard({ title, categoryId, categories, date, descrip
             {title}
           </div>
           <div className={styles.date}>
-            {date && format(parseISO(date), 'cccc, ee LLLL yyyy')}
+            {date && format(parseISO(date), 'cccc, dd LLLL yyyy')}
           </div>
         </header>
         <main>

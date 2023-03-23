@@ -35,7 +35,7 @@ export default function Card({ id, title, completed, description, categoryId, ca
             </div>
             <div className={styles.bottom}>
                 <div className={styles.dateTime}>
-                    {date && <div className={styles.date}>{isToday(parseISO(date)) ? 'Today' : format(parseISO(date), 'ee LLLL')}</div>}
+                    {date && <div className={styles.date}>{isToday(parseISO(date)) ? 'Today' : format(parseISO(date), 'dd LLLL')}</div>}
                     {time && <time className={styles.time}>{format(parse(time, 'HH:mm', new Date()), 'p')}</time>}
                 </div>
             </div>

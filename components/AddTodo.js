@@ -16,7 +16,7 @@ export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  
             id: uuidv4(),
             title: formTitle,
             description: formDescription,
-            date: format(new Date, 'yyyy-MM-d'),
+            date: format(new Date, 'yyyy-MM-dd'),
             time: format(new Date, 'HH:mm'),
             completed: false,
             categoryId: selectedFormCategory
