@@ -14,6 +14,18 @@
     }
 }
 
+.ghost {
+    background-color: #fff;
+    color: #3084fe;
+    border: 1px solid #3084fe;
+
+    &:hover {
+        background-color: #f9f9f9;
+        color: #2e80f7;
+        border: 1px solid #2e80f7;
+    }
+}
+
 .full {
     width: 100%;
 }
@@ -31,5 +43,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 15px;
+}
+
+.grid {
+    display: flex;
     gap: 15px;
 }

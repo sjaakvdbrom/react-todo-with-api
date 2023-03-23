@@ -60,7 +60,10 @@ export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  
               }
             </div>
           </div>
-          <button className={`${button.button} ${button.full}`}>Create</button>
+          <div className={button.grid}>
+            <button onClick={() => setAddTodoModalVisible(false)} type='button' className={`${button.button} ${button.ghost} ${button.full}`}>Cancel</button>
+            <button className={`${button.button} ${button.full}`}>Create</button>
+          </div>
         </form>
     )
 }
