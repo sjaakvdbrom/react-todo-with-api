@@ -14,6 +14,9 @@ export default function Modal(props) {
         if (props.addTodoModalVisible === true) {
             open(false)
         }
+        if (props.addTodoModalVisible === false) {
+            close()
+        }
     },[props.addTodoModalVisible])
 
     useLayoutEffect(() => {
