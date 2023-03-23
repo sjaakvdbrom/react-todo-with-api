@@ -21,7 +21,9 @@
 }
 
 .slide {
-  padding-right: 18px;
+  &:not(:last-child) {
+    padding-right: 18px;
+  }
 }
 
 .number {
