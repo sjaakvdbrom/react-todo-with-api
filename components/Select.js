@@ -4,7 +4,7 @@ import { HiOutlineChevronDown } from 'react-icons/hi';
 export default function Select({ value, onChange, className, selectClassName, children }) {
     return (  
         <div className={`${styles.container} ${className}`}>
-            <select value={value} onChange={onChange} className={selectClassName}>
+            <select value={value} onChange={onChange} className={`${styles.select} ${selectClassName}`}>
                 {children}
             </select>
             <HiOutlineChevronDown />

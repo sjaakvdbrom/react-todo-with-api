@@ -1,19 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import page from '../styles/Page.module.scss'
 import Link from 'next/link'
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { TbDotsVertical } from 'react-icons/tb';
+import { HiOutlineChevronDown } from 'react-icons/hi';
 import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, eachHourOfInterval, isEqual, getDate, endOfToday, roundToNearestMinutes, eachMonthOfInterval, startOfYear, endOfYear, getYear, getMonth } from 'date-fns'
 import { v4 as uuidv4 } from 'uuid';
-import Select from '../components/Select';
 import button from '../styles/Buttons.module.scss'
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Calendar.module.scss'
 import swiper from '../styles/Swiper.module.scss'
 
 export default function Calendar() {
+    const cloneRef = useRef()
     const [todos, setTodos] = useState(null)
     const [categories, setCategories] = useState(null)
     let today = startOfToday()
@@ -21,6 +22,8 @@ export default function Calendar() {
     let [selectedMonth, setSelectedMonth] = useState(getMonth(today))
     let [selectedYear, setSelectedYear] = useState(getYear(today))
     let [todosToday, setTodosToday] = useState(null)
+    let [cloneSelect, setCloneSelect] = useState(format(parse(selectedMonth + 1, 'M', new Date()), 'MMMM'))
+    let [cloneWidth, setCLoneWidth] = useState(0)
     let days = eachDayOfInterval({ // TODO: include the selectedYear aswell
         start: parse(selectedMonth + 1, 'M', new Date()),
         end: endOfMonth(parse(selectedMonth + 1, 'M', new Date())),
@@ -38,6 +41,7 @@ export default function Calendar() {
     const handleMonthSelect = (e) => {
         setSelectedDay(today)
         setSelectedMonth(Number(e.target.value))
+        setCloneSelect(format(parse(Number(e.target.value) + 1, 'M', new Date()), 'MMMM'))
     }
 
     useEffect(() => {
@@ -58,6 +62,13 @@ export default function Calendar() {
         setTodosToday(todos.filter((item) => item.date === format(selectedDay, 'yyyy-MM-dd')))
     }, [todos, selectedDay])
 
+    useEffect(() => {
+        if (cloneRef.current) {
+            const { clientWidth } = cloneRef.current;
+            setCLoneWidth(clientWidth)
+        }
+    }, [selectedMonth])
+
     return (
         <>
             <div className={`${page.wrapper}`}>
@@ -68,11 +79,17 @@ export default function Calendar() {
                         <button className={button.icon} title='Go back'><TbDotsVertical /></button>
                     </header>
                     <main>
-                        <Select className={styles.select} selectClassName={styles.selecter} value={selectedMonth} onChange={handleMonthSelect}>
-                            {months.map((month, index) => (
-                                <option key={uuidv4()} value={index}>{format(month, 'LLLL')}</option>
-                            ))}
-                        </Select>
+                        <div className={`${styles.select}`}>
+                            <select value={selectedMonth} onChange={handleMonthSelect} className={styles.selecter} style={{width: cloneWidth}}>
+                                {months.map((month, index) => (
+                                    <option key={uuidv4()} value={index}>{format(month, 'LLLL')}</option>
+                                ))}
+                            </select>
+                            <HiOutlineChevronDown />
+                        </div>
+                        <select className={`${styles.selecter} ${styles.clone}`} ref={cloneRef}>
+                            <option>{cloneSelect}</option>
+                        </select>
                         <Swiper
                             className={`${styles.swiper} ${swiper.swiper}`}
                             slidesPerView={4.25}

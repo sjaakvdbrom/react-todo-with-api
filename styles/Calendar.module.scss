@@ -1,9 +1,13 @@
 .select {
+  position: relative;
   display: inline-block;
   margin-bottom: 20px;
 
   svg {
+    position: absolute;
+    top: 50%;
     right: 0;
+    transform: translateY(-50%)
   }
 }
 
@@ -18,6 +22,14 @@
   background-color: transparent;
   border: none;
   outline: none;
+  appearance: none;
+}
+
+.clone {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  pointer-events: none;
 }
 
 .dayBox {
