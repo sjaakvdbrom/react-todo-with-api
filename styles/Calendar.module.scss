@@ -1,3 +1,25 @@
+.select {
+  display: inline-block;
+  margin-bottom: 25px;
+
+  svg {
+    right: 0;
+  }
+}
+
+.selecter {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  padding-right: 25px;
+  font-size: 19px;
+  font-weight: bold;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
 .dayBox {
   position: relative;
   display: block;
@@ -38,11 +60,6 @@
   &:not(:last-child) {
     margin-bottom: 35px;
   }
-}
-
-.swiper {
-  padding-top: 20px;
-  margin-top: -20px;
 }
 
 .bubble {

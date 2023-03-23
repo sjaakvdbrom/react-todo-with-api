@@ -5,8 +5,9 @@ import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { TbDotsVertical } from 'react-icons/tb';
-import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, eachHourOfInterval, isEqual, getDate, endOfToday, roundToNearestMinutes } from 'date-fns'
+import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, eachHourOfInterval, isEqual, getDate, endOfToday, roundToNearestMinutes, eachMonthOfInterval, startOfYear, endOfYear, getYear, getMonth } from 'date-fns'
 import { v4 as uuidv4 } from 'uuid';
+import Select from '../components/Select';
 import button from '../styles/Buttons.module.scss'
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Calendar.module.scss'
@@ -17,6 +18,8 @@ export default function Calendar() {
     const [categories, setCategories] = useState(null)
     let today = startOfToday()
     let [selectedDay, setSelectedDay] = useState(today)
+    let [selectedMonth, setSelectedMonth] = useState(getMonth(today))
+    let [selectedYear, setSelectedYear] = useState(getYear(today))
     let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'))
     let [todosToday, setTodosToday] = useState(null)
     let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
@@ -28,18 +31,25 @@ export default function Calendar() {
         start: startOfToday(),
         end: endOfToday()
     })
+
+    const months = eachMonthOfInterval({
+        start: startOfYear(selectedYear),
+        end: endOfYear(selectedYear)
+    })
+
     useEffect(() => {
-    fetch('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/todos')
-        .then((res) => res.json())
-        .then((data) => {
-        setTodos(data)
+        fetch('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/todos')
+            .then((res) => res.json())
+            .then((data) => {
+            setTodos(data)
         });
-    fetch('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/categories')
-        .then((res) => res.json())
-        .then((data) => {
-        setCategories(data)
+        fetch('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/categories')
+            .then((res) => res.json())
+            .then((data) => {
+            setCategories(data)
         })
     }, [])
+
     useEffect(() => {
         if (!todos) return
         setTodosToday(todos.filter((item) => item.date === format(selectedDay, 'yyyy-MM-dd')))
@@ -55,6 +65,11 @@ export default function Calendar() {
                         <button className={button.icon} title='Go back'><TbDotsVertical /></button>
                     </header>
                     <main>
+                        <Select className={styles.select} selectClassName={styles.selecter} value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+                            {months.map((month, index) => (
+                                <option key={uuidv4()} value={index}>{format(month, 'LLLL')}</option>
+                            ))}
+                        </Select>
                         <Swiper
                             className={`${styles.swiper} ${swiper.swiper}`}
                             slidesPerView={4.25}
