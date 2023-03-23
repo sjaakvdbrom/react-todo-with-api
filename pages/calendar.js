@@ -34,17 +34,16 @@ export default function Calendar() {
                     <main>
                         <Swiper
                             className={swiper.swiper}
-                            spaceBetween={18}
-                            slidesPerView={4.5}
+                            slidesPerView={4.25}
                             initialSlide={getDate(today) - 1}
                         >
                             {days.map((day) => (
                                 <SwiperSlide
+                                className={styles.slide}
                                 key={day.toString()}
-                                onClick={() => setSelectedDay(day)}
                                 >
                         
-                                    <time className={`
+                                    <time onClick={() => setSelectedDay(day)} className={`
                                     ${styles.dayBox}
                                     ${isEqual(day, selectedDay) && styles.today}
                                     `} dateTime={format(day, 'yyyy-MM-dd')}>
