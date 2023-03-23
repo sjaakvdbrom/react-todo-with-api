@@ -9,6 +9,8 @@ import Modal from '../components/Modal';
 import AddTodo from '../components/AddTodo';
 import { BiCalendar, BiBell } from 'react-icons/bi';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import button from '../styles/Buttons.module.scss'
+import { HiPlus } from 'react-icons/hi';
 
 export default function Home() {
   const listInnerRef = useRef();
@@ -17,6 +19,7 @@ export default function Home() {
   const [todoLoading, setTodoLoading] = useState(false)
   const [categories, setCategories] = useState(null)
   const [categoryLoading, setCategoryLoading] = useState(false)
+  const [addTodoModalVisible, setAddTodoModalVisible] = useState(false)
 
   useEffect(() => {
     setTodoLoading(true)
@@ -123,11 +126,13 @@ export default function Home() {
         </main>
       </div>
 
+      <button onClick={() => setAddTodoModalVisible(true)} className={`${styles.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
+
       <Modal title={'Test modal'}>
         test
       </Modal>
       
-      <Modal title={'Add new ToDo'}>
+      <Modal title={'Add new ToDo'} addTodoModalVisible={addTodoModalVisible} setAddTodoModalVisible={setAddTodoModalVisible}>
         <AddTodo 
         setTodos={setTodos}
         categories={categories}

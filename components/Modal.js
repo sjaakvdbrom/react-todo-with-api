@@ -1,16 +1,20 @@
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useRef, useState, useLayoutEffect, useEffect } from 'react';
 import { useDrag } from '@use-gesture/react'
 import { a, useSpring, config } from '@react-spring/web'
 import modal from '../styles/Modal.module.scss'
 import typo from '../styles/Typography.module.scss'
-import button from '../styles/Buttons.module.scss'
-import { HiPlus } from 'react-icons/hi';
 
 export default function Modal(props) {
     const modalRef = useRef(null);
     const [height, setHeight] = useState(1000);
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [{ y }, api] = useSpring(() => ({ y: height }))
+
+    useEffect(() => {
+        if (props.addTodoModalVisible === true) {
+            open(false)
+        }
+    },[props.addTodoModalVisible])
 
     useLayoutEffect(() => {
     const { height } = modalRef.current.getBoundingClientRect();
@@ -28,6 +32,7 @@ export default function Modal(props) {
 
     const close = (velocity = 0) => {
         setModalIsOpen(false)
+        props.setAddTodoModalVisible(false)
         api.start({ y: height, immediate: false, config: { ...config.stiff, velocity } })
     }
 
@@ -56,7 +61,6 @@ export default function Modal(props) {
 
     return (  
       <>
-        <button onClick={open} className={`${modal.create} ${button.button} ${button.xl} ${button.iconBefore}`}><HiPlus />Create New</button>
         <a.div onClick={() => close()} className={`${modal.overlay} ${!modalIsOpen && modal.hide}`} style={bgStyle}></a.div>
 
         <a.div style={{ bottom: `calc(-100% + ${height - 100}px)`, y }} className={`${modal.drag}`}>
