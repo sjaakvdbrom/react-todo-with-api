@@ -19,4 +19,12 @@
     appearance: none;
     outline-color: transparent;
     cursor: pointer;
-  }
+
+    &:invalid {
+        color: #929395;
+    }
+
+    option {
+        color: #353638;
+    }
+}

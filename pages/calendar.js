@@ -80,7 +80,7 @@ export default function Calendar() {
                     <main>
                         <div className={`${dropdown.container} mb-4`}>
                             <button onClick={handleDropdown} className={dropdown.trigger}>
-                                <span className={dropdown.default}>{format(months[selectedMonth], 'LLLL')}</span>
+                                <span className={dropdown.default}>{format(months[selectedMonth], 'LLLL')} {selectedYear}</span>
                                 <HiOutlineChevronDown />
                             </button>
                             <nav className={`${dropdown.dropdown} ${visible ? dropdown.active : dropdown.disabled}`}>

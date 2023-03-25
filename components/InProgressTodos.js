@@ -16,6 +16,7 @@ export default function InProgressTodos({ todos, categories, todoLoading }) {
                 className={swiper.swiper}
                 spaceBetween={30}
                 slidesPerView={1.13}
+                touchEventsTarget='container'
                 wrapperClass={styles.swiperWrapper}
             >
                 {todos

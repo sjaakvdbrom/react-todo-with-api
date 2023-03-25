@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  }) {
     const [formTitle, setFormTitle] = useState('')
     const [formDescription, setFormDescription] = useState('')
-    const [selectedFormCategory, setSelectedFormCategory] = useState(0)
+    const [selectedFormCategory, setSelectedFormCategory] = useState('')
 
     const handleAddTodo = (event) => {
         event.preventDefault();
@@ -24,7 +24,7 @@ export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  
 
         setFormTitle('')
         setFormDescription('')
-        setSelectedFormCategory(0)
+        setSelectedFormCategory('')
         setAddTodoModalVisible(false)
     }
 
@@ -35,7 +35,7 @@ export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  
     const handleCancel = () => {
       setFormTitle('')
       setFormDescription('')
-      setSelectedFormCategory(0)
+      setSelectedFormCategory('')
       setAddTodoModalVisible(false)
     }
 
@@ -57,7 +57,7 @@ export default function AddTodo({ setTodos, categories, setAddTodoModalVisible  
                   value={selectedFormCategory}
                   onChange={e => handleFormCategory(e.target.value)}
                 >
-                  <option style={{display: 'none'}} disabled defaultValue value='0'>Choose a category</option>
+                  <option style={{display: 'none'}} disabled value=''>Choose a category</option>
                   {categories.map(o => (
                     <option key={uuidv4()} value={o.id}>
                       {o.title}
