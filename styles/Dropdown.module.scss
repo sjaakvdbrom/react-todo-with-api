@@ -1,0 +1,67 @@
+.container {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 10;
+    width: 200px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid #d5d9e4;
+    box-shadow: 1px 2px 4px #d5d9e4;
+}
+
+.disabled {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.trigger {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.default {
+    margin-right: 10px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #000;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 5px;
+    color: #969799;
+
+    &:hover {
+        background-color: #f9f9f9;
+    }
+
+    &.current {
+        background-color: #eaebef;
+        font-weight: 500;
+        color: #000;
+        cursor: default;
+    }
+}
+
+

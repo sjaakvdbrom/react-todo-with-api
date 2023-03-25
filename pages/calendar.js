@@ -6,12 +6,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { TbDotsVertical } from 'react-icons/tb';
 import { HiOutlineChevronDown } from 'react-icons/hi';
+import { FiCheck } from 'react-icons/fi';
 import { format, parse, startOfToday, eachDayOfInterval, endOfMonth, eachHourOfInterval, isEqual, getDate, endOfToday, roundToNearestMinutes, eachMonthOfInterval, startOfYear, endOfYear, getYear, getMonth } from 'date-fns'
 import { v4 as uuidv4 } from 'uuid';
 import button from '../styles/Buttons.module.scss'
 import typo from '../styles/Typography.module.scss'
 import styles from '../styles/Calendar.module.scss'
 import swiper from '../styles/Swiper.module.scss'
+import dropdown from '../styles/Dropdown.module.scss'
 
 export default function Calendar() {
     const cloneRef = useRef()
@@ -22,12 +24,22 @@ export default function Calendar() {
     let [selectedMonth, setSelectedMonth] = useState(getMonth(today))
     let [selectedYear, setSelectedYear] = useState(getYear(today))
     let [todosToday, setTodosToday] = useState(null)
-    let [cloneSelect, setCloneSelect] = useState(format(parse(selectedMonth + 1, 'M', new Date()), 'MMMM'))
-    let [cloneWidth, setCLoneWidth] = useState(0)
+    const [visible, setVisible] = useState(false)
     let days = eachDayOfInterval({ // TODO: include the selectedYear aswell
         start: parse(selectedMonth + 1, 'M', new Date()),
         end: endOfMonth(parse(selectedMonth + 1, 'M', new Date())),
     })
+
+    const handleDropdown = () => {
+        setVisible(current => !current)
+    }
+
+    const handleSelect = (e) => {
+        setSelectedDay(today)
+        setSelectedMonth(e)
+        setVisible(false)
+    }
+   
     const timeline = eachHourOfInterval({
         start: startOfToday(),
         end: endOfToday()
@@ -37,12 +49,6 @@ export default function Calendar() {
         start: startOfYear(selectedYear),
         end: endOfYear(selectedYear)
     })
-
-    const handleMonthSelect = (e) => {
-        setSelectedDay(today)
-        setSelectedMonth(Number(e.target.value))
-        setCloneSelect(format(parse(Number(e.target.value) + 1, 'M', new Date()), 'MMMM'))
-    }
 
     useEffect(() => {
         fetch('https://my-json-server.typicode.com/sjaakvdbrom/react-todo-with-api/todos')
@@ -62,13 +68,6 @@ export default function Calendar() {
         setTodosToday(todos.filter((item) => item.date === format(selectedDay, 'yyyy-MM-dd')))
     }, [todos, selectedDay])
 
-    useEffect(() => {
-        if (cloneRef.current) {
-            const { clientWidth } = cloneRef.current;
-            setCLoneWidth(clientWidth)
-        }
-    }, [selectedMonth])
-
     return (
         <>
             <div className={`${page.wrapper}`}>
@@ -79,20 +78,29 @@ export default function Calendar() {
                         <button className={button.icon} title='Go back'><TbDotsVertical /></button>
                     </header>
                     <main>
-                        <div className={`${styles.select}`}>
-                            <select value={selectedMonth} onChange={handleMonthSelect} className={styles.selecter} style={{width: cloneWidth}}>
+                        <div className={`${dropdown.container} mb-4`}>
+                            <button onClick={handleDropdown} className={dropdown.trigger}>
+                                <span className={dropdown.default}>{format(months[selectedMonth], 'LLLL')}</span>
+                                <HiOutlineChevronDown />
+                            </button>
+                            <nav className={`${dropdown.dropdown} ${visible ? dropdown.active : dropdown.disabled}`}>
                                 {months.map((month, index) => (
-                                    <option key={uuidv4()} value={index}>{format(month, 'LLLL')}</option>
+                                    <a 
+                                    key={uuidv4()} 
+                                    value={index}
+                                    className={`${dropdown.item} ${index === selectedMonth ? dropdown.current : ''}`}
+                                    onClick={() => handleSelect(index)}>
+                                        <span>{format(month, 'LLLL')}</span>
+                                        {index === selectedMonth && <FiCheck />}
+                                    </a>
                                 ))}
-                            </select>
-                            <HiOutlineChevronDown />
+                            </nav>
                         </div>
-                        <select className={`${styles.selecter} ${styles.clone}`} ref={cloneRef}>
-                            <option>{cloneSelect}</option>
-                        </select>
                         <Swiper
                             className={`${styles.swiper} ${swiper.swiper}`}
                             slidesPerView={4.25}
+                            spaceBetween={18}
+                            touchEventsTarget='container'
                             initialSlide={getDate(today) - 1}
                         >
                             {days.map((day) => (
